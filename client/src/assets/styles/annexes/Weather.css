@@ -1,0 +1,61 @@
+.main__weather {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap : 2rem;
+}
+
+.main__weather img {
+    width : 75px;
+}
+
+.main__weather div {
+    display : flex;
+}
+
+.main__weather .main__temp{
+    font-size : 60px
+}
+
+.weather__sun {
+    display : flex;
+    justify-content: center;
+    gap : 2rem;
+}
+
+.weather__sun p {
+    display : flex;
+    align-items: center;
+    gap : 0.2rem;
+}
+
+.weather_hour {
+    display : grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.weather_hour div div {
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    gap : 1rem;
+}
+
+.MuiPaper-root {
+    margin-top : 20px;
+}
+
+.weather__otherDays {
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.weather__otherDays div {
+    width : 50%;
+}
+
+.weather__otherDays img {
+    margin : auto;
+}

@@ -1,0 +1,45 @@
+nav {
+    position : fixed;
+    width : 200px;
+    background-color: var(--background);
+    height : 100vh;
+    border-right : 1px solid black;
+    z-index: 99;
+}
+
+nav .nav__wrapper {
+    padding : 20px;
+}
+
+nav .nav__wrapper ul {
+    margin-top : 50px;
+}
+
+nav .nav__wrapper ul li {
+    list-style-type: none;
+    cursor: pointer;
+}
+
+nav .nav__wrapper ul li svg{
+    vertical-align: middle;
+    margin-right : 5px;
+}
+
+nav .nav__wrapper ul > li{
+    margin : 25px 0 15px;
+}
+
+nav .nav__wrapper ul li ul {
+    margin : 10px 0;
+}
+
+nav .nav__wrapper ul li ul a{
+    text-decoration: none;
+    color : var(--text);
+}
+
+nav .nav__wrapper ul li ul a li{
+    margin : 10px 0;
+}
+
+
