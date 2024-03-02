@@ -14,6 +14,7 @@ import AirIcon from '@mui/icons-material/Air';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { Box, Paper } from "@mui/material";
+import Loader from "../../components/common/Loader";
 const Weather = () => {
     const [weatherData, setWeatherData] = useState('');
 
@@ -44,9 +45,9 @@ const Weather = () => {
     return (
         <>
             {!weatherData ?
-                <ClipLoader size={50} />
+                <Loader/>
                 :
-                <Box>
+                <Box className="container">
                     <Paper>
                             <header>
                                 <h1><CalendarMonthIcon />Maintenant</h1>

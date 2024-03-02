@@ -1,0 +1,7 @@
+.alert {
+    position : fixed;
+    top : 65px;
+    left : 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
+}

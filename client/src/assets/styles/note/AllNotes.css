@@ -1,0 +1,32 @@
+.btn__category {
+    display : flex;
+    gap : 2em;
+    margin-bottom : 3em;
+}
+
+.note__option button {
+    min-width : 35px!important;
+    width : 55px;
+    /* display: flex; */
+    padding : 5px;
+    margin : 0 2px;
+}
+
+.note__option button span {
+    margin : 0;
+}
+
+.notes__list {
+    display : flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /* justify-content: center; */
+    
+}
+
+.note__item {
+    width : calc(100% / 2 - 2em);
+    margin : 0.5em 1em;
+}
+
+

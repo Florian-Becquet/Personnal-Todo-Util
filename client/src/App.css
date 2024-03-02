@@ -69,3 +69,10 @@ main {
   padding-top : 48px;
   /* min-height : calc(100vh - 48px); */
 }
+
+.container {
+  width : 70%;
+  margin : auto;
+  padding : 4em 0;
+}
+

@@ -1,0 +1,52 @@
+.MuiFormControl-root {
+    /* margin-top: 0!important; */
+}
+
+.Editor__Preview {
+    display : flex;
+    /* align-items: center; */
+    width : 100%;
+    border : 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.editor {
+    width : 50%;
+    border-right : 2px solid black;
+    padding : 20px;
+}
+
+.preview {
+    padding : 20px;
+    width : 50%;
+}
+
+.preview img {
+    width : 150px;
+}
+
+
+.editor textarea {
+    resize: none;
+    width : 100%;
+    min-height : 500px;
+    border : none;
+    outline : none;
+    padding : 10px 0;
+}
+
+.preview .prose {
+    /* width : 50%; */
+    word-wrap: break-word;
+    height : 500px;
+    padding : 10px 0;
+    overflow: auto;
+
+}
+
+.select__note {
+    margin : 0!important;
+    margin-bottom : 20px!important;
+}
+
+

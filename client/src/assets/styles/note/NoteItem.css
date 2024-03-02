@@ -1,0 +1,21 @@
+.note__item {
+    display : flex;
+    justify-content: space-between;
+    box-shadow:  0 0 4px black;
+    align-items: center;
+    padding : 10px;
+    margin : 10px 0;
+}
+
+.singleNote h3{
+    margin : 10px 0;
+}
+
+.singleNote .Editor__Preview {
+    margin-top : 15px;
+    width : 50%;
+}
+
+.singleNote .Editor__Preview .preview{
+    width : 100%;
+}

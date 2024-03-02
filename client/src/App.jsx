@@ -6,8 +6,10 @@ import MainLayout from './components/layout/MainLayout'
 import TodayTodos from './pages/dashboard/TodayTodos'
 import AllTodos from './pages/dashboard/AllTodos'
 import Weather from './pages/annexes/Weather'
-import CreateNoteForm from './pages/notes/CreateNoteForm'
-import { NotePage } from './pages/notes/NotePage'
+import NoteForm from './pages/notes/NoteForm'
+import AllNotes  from './pages/notes/AllNotes'
+import NotePage from './pages/notes/NotePage';
+import TodoUpdate from './pages/dashboard/TodoUpdate'
 
 
 
@@ -19,10 +21,11 @@ function App() {
       <Route path="/" element={<MainLayout />} >
         <Route path="/dashboard/today" element={<TodayTodos />} />
         <Route path="/dashboard/allTasks" element={<AllTodos />} />
+        <Route path="/dashboard/todosUpdate/:id" element={<TodoUpdate />} />
         <Route path="/annexes/weather" element={<Weather />} />
-        <Route path="/notes/createNote" element={<CreateNoteForm />} />
-        <Route path="/notes/allNotes" element={<NotePage />} />
-
+        <Route path="/notes/createNote" element={<NoteForm />} />
+        <Route path="/notes/allNotes" element={<AllNotes />} />
+        <Route path="/notes/:id" element={<NotePage />} />
       </Route>
     </Routes>
   )

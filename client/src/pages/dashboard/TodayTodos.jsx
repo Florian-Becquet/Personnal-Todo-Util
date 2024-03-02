@@ -12,6 +12,9 @@ import dayjs from "dayjs";
 // import axios from 'axios';
 import 'dayjs/locale/fr'
 import TodoForm from './TodoForm';
+import AlertMessage from '../../components/common/AlertMessage';
+import { Box, Button, LinearProgress, TextField } from '@mui/material';
+import Loader from '../../components/common/Loader';
 
 
 // import "../../components/styles/TodoPage.css"
@@ -22,17 +25,14 @@ const TodayTodos = () => {
   const { isLoading, data: todos } = useQuery('todos',
     () => readTodosRequest());
   const [showNav, setShowNav] = useState(false);
+  // const [isSuccess, setIsSuccess] = useState(false);
+  const [message, setMessage] = useState('')
   let arrayWithoutDuplon;
   let lengthTodayNoComplete;
   let TaskToDo;
   let TaskCompleted;
   let allTaskToDo;
   dayjs.locale('fr')
-
-
-  // const config = {
-  //   headers: { Authorization: token }
-  // };
 
 
   function sortDate(a, b) {
@@ -47,17 +47,6 @@ const TodayTodos = () => {
   if (!isLoading) {
     todos.sort(sortDate);
   }
-
-  // function sortUrgent(a) {
-  //   if (a.category === "Urgent") {
-  //     return -1;
-  //   }
-  //   return 0;
-  // }
-  // if (!isLoading) {
-  //   todos.sort(sortUrgent);
-  // }
-
 
   const lengthTodayNoCompleted = () => {
     const length = todos.filter((todo) => dayjs(new Date()).format("dddd DD/MM") === dayjs(todo.date).format("dddd DD/MM") && todo.completed != true).length
@@ -129,7 +118,6 @@ const TodayTodos = () => {
   }
   if (!isLoading) {
     allTaskToDo = TaskToday();
-    console.log(allTaskToDo);
   }
 
 
@@ -137,49 +125,62 @@ const TodayTodos = () => {
 
   return (
     <>
-      <button onClick={() => setShowNav(!showNav)}>Ajouter une tâche</button>
-      <TodoForm showNav={showNav} setShowNav={setShowNav} />
+      {/* <TodoForm showNav={showNav} setShowNav={setShowNav} /> */}
       {isLoading
         ?
-        <ClipLoader size={50} />
+        <Loader />
         :
-        <div className='todo__container'>
+        <div className='container'>
+          {/* <Button onClick={() => setShowNav(!showNav)} variant="contained">Ajouter une tâche</Button> */}
           <div className='todo__title'>
             <div>
               <h2>Todo</h2>
-              <p>{TaskToDo.length} tâches en cours.</p>
+
             </div>
+
+
+            <h2>{dayjs(new Date()).format("DD MMMM")}</h2>
+          </div>
+          <div className='todo__subtitle'>
+
+            <p>{TaskToDo.length} tâches en cours</p>
             {allTaskToDo.length !== 0 ?
-              <div className='pourcent'>
-                <div style={{ width: `calc(100% / ${allTaskToDo.length} * ${TaskCompleted.length})` }}>
-                  <p>{100 / allTaskToDo.length * TaskCompleted.length} % complétées</p>
-                </div>
-              </div>
+              // <div className='wrapper__pourcent'>
+              //   <div className='pourcent'>
+              //     <div style={{ width: `calc(100% / ${allTaskToDo.length} * ${TaskCompleted.length})` }}>
+
+              //     </div>
+              //   </div>
+              //   <p>{Math.round(100 / allTaskToDo.length * TaskCompleted.length)} % complétées</p>
+              // </div>
+              <>
+                <Box sx={{ width: '150px' }} className='pourcent'>
+                  <LinearProgress variant="determinate" value={Math.round(100 / allTaskToDo.length * TaskCompleted.length)} />
+                  <p>{Math.round(100 / allTaskToDo.length * TaskCompleted.length)} % complétées</p>
+                </Box>
+              </>
               :
               ''
             }
-            <h2>{dayjs(new Date()).format("DD MMMM")}</h2>
           </div>
           <div className='todo__wrapper'>
-            {lengthTodayNoComplete === 0 ?
-              <div style={{ textAlign: 'center' }}>Aucune tâche en cours ! </div>
-              :
-              todos
-                .filter((todo) => dayjs(new Date()).format("dddd DD/MM") === dayjs(todo.date).format("dddd DD/MM") && todo.completed != true)
-                .map((todo) => {
-                  {
-                    return (
-                      <TodoItem todo={todo} key={todo._id} spacing={2} />
-                    )
-                  }
 
-                })
+            {todos
+              .filter((todo) => dayjs(new Date()).format("dddd DD/MM") === dayjs(todo.date).format("dddd DD/MM") && todo.completed != true)
+              .map((todo) => {
+                {
+                  return (
+                      <TodoItem todo={todo} key={todo._id} spacing={2} setMessage={setMessage} />
+                  )
+                }
+
+              })
             }
-
           </div>
-          {console.log(TaskCompleted.length)}
           {TaskCompleted.length !== 0 ?
-              <h2 style={{ fontSize: "32px", marginLeft: "8px", margin: "20px 0" }}>Complété</h2>
+            <div className='todo__title'>
+              <h2>Complétée</h2>
+            </div>
             :
             ''
           }
@@ -187,11 +188,14 @@ const TodayTodos = () => {
             {todos
               .filter((todo) => dayjs(new Date()).format("dddd DD/MM") === dayjs(todo.date).format("dddd DD/MM") && todo.completed === true)
               .map((todo) => {
-                return (<TodoItem todo={todo} key={todo._id} />)
+                return (<TodoItem todo={todo} key={todo._id} setMessage={setMessage} />)
               })
             }
           </div>
         </div>
+      }
+      {message &&
+        <AlertMessage severity="success" children={message} />
       }
     </>
   )

@@ -9,6 +9,8 @@ const readDateTodosRoute = require('./routes/todos/readDateTodosRoute');
 
 const readNotesRoute = require('./routes/notes/readNotesRoute')
 const createNoteRoute = require('./routes/notes/createNoteRoute');
+const deleteNoteRoute = require('./routes/notes/deleteNoteRoute');
+const updateNoteRoute = require('./routes/notes/updateNoteRoute');
 
 
 router.post('/todos', createTodoRoute);
@@ -19,6 +21,8 @@ router.delete('/todos/:id',  deleteTodoRoute);
 
 router.get('/notes',  readNotesRoute);
 router.post('/notes', createNoteRoute);
+router.delete('/notes/:id', deleteNoteRoute);
+router.put('/notes/:id', updateNoteRoute)
 
 
 module.exports = router;

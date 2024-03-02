@@ -12,6 +12,8 @@ import dayjs from "dayjs";
 // import { API_URL } from "../../api/config"
 // import axios from 'axios';
 import 'dayjs/locale/fr'
+import Loader from '../../components/common/Loader';
+import AlertMessage from '../../components/common/AlertMessage';
 
 // import "../../components/styles/TodoPage.css"
 // import Weather from '../component/annexes/Weather';
@@ -21,6 +23,7 @@ const AllTodos = () => {
 
     const { isLoading, data: todos } = useQuery('todos',
         () => readTodosRequest());
+    const [message, setMessage] = useState('')
     let arrayWithoutDuplon;
     let TaskToDo;
     let TaskCompleted;
@@ -81,7 +84,7 @@ const AllTodos = () => {
 
     const TasksCompleted = () => {
         let TasksCompletedToday = [];
-        todos.filter((todo) => dayjs(new Date()).format("dddd DD/MM") === dayjs(todo.date).format("dddd DD/MM") && todo.completed === true)
+        todos.filter((todo) => dayjs(todo.date).format("dddd DD/MM") && todo.completed === true)
             .map((todo) => {
                 {
                     TasksCompletedToday.push(todo)
@@ -101,11 +104,14 @@ const AllTodos = () => {
         <>
             {isLoading
                 ?
-                <ClipLoader size={50} />
+                <Loader />
                 :
-                <div className='todo__container'>
+                <div className='container'>
+                    <div className='todo__title'>
+                        <h2>Todo</h2>
+                    </div>
                     <div className='todo__list'>
-
+                        <h2>En cours</h2>
                         {arrayWithoutDuplon.length !== 0 ?
                             arrayWithoutDuplon.map((day, index) =>
                                 <div key={index}>
@@ -115,7 +121,7 @@ const AllTodos = () => {
                                         {todos
                                             .filter((todo) => dayjs(todo.date).format("dddd DD/MM") === day && todo.completed != true)
                                             .map((todo) => {
-                                                return (<TodoItem todo={todo} key={todo._id} />)
+                                                return (<TodoItem setMessage={setMessage} todo={todo} key={todo._id} />)
                                             })
                                         }
                                     </div>
@@ -126,7 +132,9 @@ const AllTodos = () => {
                         }
                     </div>
                     {TaskCompleted.length !== 0 ?
-                        <h2 style={{ fontSize: "32px", marginLeft: "8px", margin: "20px 0" }}>Complété</h2>
+                        <div className='todo__title'>
+                            <h2>Complétée</h2>
+                        </div>
                         :
                         ''
                     }
@@ -134,9 +142,12 @@ const AllTodos = () => {
                         {todos
                             .filter((todo) => todo.completed === true)
                             .map((todo) => {
-                                return (<TodoItem todo={todo} key={todo._id} />)
+                                return (<TodoItem setMessage={setMessage} todo={todo} key={todo._id} />)
                             })}
                     </div>
+                    {message &&
+                        <AlertMessage severity="success" children={message} />
+                    }
                 </div>
             }
         </>

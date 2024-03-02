@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Alert } from '@mui/material';
 
+import '../../assets/styles/common/Alert.css'
+
 const AlertMessage = ({ severity, children }) => {
     const [show, setShow] = useState(true)
 
@@ -10,7 +12,7 @@ const AlertMessage = ({ severity, children }) => {
             // After 3 seconds set the show value to false
             setShow(false)
         }, 3000)
-
+        
         return () => {
             clearTimeout(timeId)
         }
@@ -23,7 +25,7 @@ const AlertMessage = ({ severity, children }) => {
 
     // If show is true this will be returned
     return (
-        <Alert severity={severity} sx={{mt: 3}}>
+        <Alert className="alert" severity={severity} sx={{mt: 3}}>
             {children}
         </Alert>
     )

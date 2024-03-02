@@ -13,6 +13,8 @@ import SendIcon from '@mui/icons-material/Send';
 import ClipLoader from 'react-spinners/ClipLoader'
 import '../../assets/styles/todo/TodoForm.css'
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import Loader from '../../components/common/Loader';
+
 
 function TodoForm({ showNav, setShowNav }) {
   const [text, setText] = useState('');
@@ -50,10 +52,10 @@ function TodoForm({ showNav, setShowNav }) {
             });
             setText('')
             setCategory('');
-            setShowNav(!showNav)
+            // setShowNav(!showNav)
           }}
         >
-          <h1 style={{ fontSize: "32px", textAlign: "center", marginBottom: "20px" }}>Ajouter une nouvelle tâche</h1>
+          <h1>Ajouter une nouvelle tâche</h1>
           <TextField label="Titre" variant="outlined" value={text} onChange={(e) => setText(e.target.value)} required sx={{ mb: 3 }} />
           <LocalizationProvider locale={fr} dateAdapter={AdapterDayjs}>
             <DateTimePicker
@@ -90,11 +92,12 @@ function TodoForm({ showNav, setShowNav }) {
             <AlertMessage severity="success" children="Tâche correctement ajoutée" />
           }
           {isLoading &&
-            <ClipLoader size={50} />
+            <Loader/>
           }
           {isError &&
             <AlertMessage severity="error" children="Une erreur est survenue, veuillez réessayer !" />
           }
+
         </form>
       </div>
     </>
