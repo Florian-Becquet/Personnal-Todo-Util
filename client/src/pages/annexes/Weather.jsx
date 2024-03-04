@@ -45,63 +45,55 @@ const Weather = () => {
     return (
         <>
             {!weatherData ?
-                <Loader/>
+                <Loader />
                 :
                 <Box className="container">
-                    <Paper>
-                            <header>
-                                <h1><CalendarMonthIcon />Maintenant</h1>
-                                {/* <h1><CalendarMonthIcon />Heure : {weatherData.location.localtime} / Aujourd'hui</h1> */}
-                                <h1><LocationOnIcon />{weatherData.location.name}</h1>
-                            </header>
-                            <div className="main__weather">
-                                <div>
-                                    <img src={weatherData.current.condition.icon} />
-                                    <p className="main__temp">{weatherData.current.temp_c}°C</p>
+                    <header>
+                        <h1><CalendarMonthIcon />Maintenant</h1>
+                        {/* <h1><CalendarMonthIcon />Heure : {weatherData.location.localtime} / Aujourd'hui</h1> */}
+                        <h1><LocationOnIcon />{weatherData.location.name}</h1>
+                    </header>
+                    <div className="main__weather">
+                        <div>
+                            <img src={weatherData.current.condition.icon} />
+                            <p className="main__temp">{weatherData.current.temp_c}°C</p>
+                        </div>
+                        <p>Ressenti : {weatherData.current.feelslike_c}°C</p>
+                    </div>
+                    {weatherData.forecast.forecastday
+                        .filter((cast) => dayjs(cast.date).format("YYYY-MM-DD") === dayjs(new Date()).format("YYYY-MM-DD"))
+                        .map((cast, index) =>
+                            <div key={index}>
+                                <div className="weather__sun">
+                                    <p><LightModeIcon />{cast.astro.sunrise}</p>
+                                    <p><WbTwilightIcon />{cast.astro.sunset}</p>
                                 </div>
-                                <p>Ressenti : {weatherData.current.feelslike_c}°C</p>
+                                {/* <p><ThermostatIcon />max temp : {cast.day.maxtemp_c}°</p> */}
+                                <div className="weather_hour">
+                                    {cast.hour
+                                        .filter((heure) => heure.time === dateDay + " 07:00" || heure.time === dateDay + " 08:00" || heure.time === dateDay + " 09:00" || heure.time === dateDay + " 12:00" || heure.time === dateDay + " 15:00" || heure.time === dateDay + " 17:00")
+                                        .map((heure, index) => (
+                                            <div key={index}>
+                                                <div>
+                                                    <p><AccessTimeIcon />{heure.time.substr(10)}</p>
+                                                    <img src={heure.condition.icon} />
+                                                </div>
+                                            </div>
+                                        ))}
+                                </div>
                             </div>
-                            {weatherData.forecast.forecastday
-                                .filter((cast) => dayjs(cast.date).format("YYYY-MM-DD") === dayjs(new Date()).format("YYYY-MM-DD"))
-                                .map((cast, index) =>
-                                    <div key={index}>
-                                        <div className="weather__sun">
-                                            <p><LightModeIcon />{cast.astro.sunrise}</p>
-                                            <p><WbTwilightIcon />{cast.astro.sunset}</p>
-                                        </div>
-                                        {/* <p><ThermostatIcon />max temp : {cast.day.maxtemp_c}°</p> */}
-                                        <div className="weather_hour">
-                                            {cast.hour
-                                                .filter((heure) => heure.time === dateDay + " 07:00" || heure.time === dateDay + " 08:00" || heure.time === dateDay + " 09:00" || heure.time === dateDay + " 12:00" || heure.time === dateDay + " 15:00" || heure.time === dateDay + " 17:00")
-                                                .map((heure, index) => (
-                                                    <div key={index}>
-                                                        <div>
-                                                            <p><AccessTimeIcon />{heure.time.substr(10)}</p>
-                                                            <img src={heure.condition.icon} />
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                        </div>
-                                    </div>
-                                )}
-                    </Paper>
-                    <Paper>
-
-                        <>
-                            <div className="weather__otherDays">
-                                {weatherData.forecast.forecastday
-                                    .filter((cast) => dayjs(cast.date).format("YYYY-MM-DD") !== dayjs(new Date()).format("YYYY-MM-DD"))
-                                    .map((cast, index) =>
-                                        <div key={index}>
-                                            <h1><CalendarMonthIcon />Jour : {dayjs(cast.date).format("DD-MM")}</h1>
-                                            <p><ThermostatIcon />{cast.day.avgtemp_c}°</p>
-                                            <img src={cast.day.condition.icon} />
-                                        </div>
-                                    )}
-                            </div>
-                        </>
-
-                    </Paper>
+                        )}
+                    <div className="weather__otherDays">
+                        {weatherData.forecast.forecastday
+                            .filter((cast) => dayjs(cast.date).format("YYYY-MM-DD") !== dayjs(new Date()).format("YYYY-MM-DD"))
+                            .map((cast, index) =>
+                                <div key={index}>
+                                    <h1><CalendarMonthIcon />Jour : {dayjs(cast.date).format("DD-MM")}</h1>
+                                    <p><ThermostatIcon />{cast.day.avgtemp_c}°</p>
+                                    <img src={cast.day.condition.icon} />
+                                </div>
+                            )}
+                    </div>
                 </Box>
             }
         </>

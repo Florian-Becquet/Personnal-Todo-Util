@@ -49,4 +49,6 @@
     margin-bottom : 20px!important;
 }
 
-
+.MuiFormLabel-root {
+    color : var(--text)!important;
+}

@@ -13,9 +13,14 @@
 
 .singleNote .Editor__Preview {
     margin-top : 15px;
-    width : 50%;
+    /* width : 50%; */
 }
 
+textarea {
+    background-color: var(--main-background);
+    color : var(--text);
+}
+/*
 .singleNote .Editor__Preview .preview{
     width : 100%;
-}
+} */

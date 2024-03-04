@@ -2,9 +2,9 @@ import React from 'react';
 import { marked } from 'marked';
 // import dompurifiy from "dompurify";
 import hljs from 'highlight.js';
-import 'highlight.js/styles/tokyo-night-dark.css';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+// import 'highlight.js/styles/tokyo-night-dark.css';
+// import SyntaxHighlighter from 'react-syntax-highlighter';
+// import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 export const Preview = ({ text }) => {
 

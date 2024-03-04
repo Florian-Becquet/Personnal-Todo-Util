@@ -1,4 +1,13 @@
 :root {
+  --background : #212121;
+  --main-background : #2b2b2b;
+  --text : #B4B4B4;
+  --border : #151515;
+  --gray : #606060;
+  --outer-shadow: 3px 3px 3px #202125, -3px -3px 3px #2b2b2b;
+  --inner-shadow: inset 3px 3px 3px #202125, inset -3px -3px 3px #2b2b2b;
+  --yellow : #FDEF52;
+
   --app-container: #f3f6fd;
   --main-color: #1f1c2e;
   --secondary-color: #4A4A4A;
@@ -59,14 +68,17 @@
 
 body {
   overflow-x: hidden;
+  color : var(--text)
 }
 
-main {
+main, .main {
   /* width : calc(100vw - 200px); */
   width : 100vw;
   min-height : 100vh;
   padding-left : 200px;
   padding-top : 48px;
+  background-color: var(--main-background);
+  color : var(--text)
   /* min-height : calc(100vh - 48px); */
 }
 

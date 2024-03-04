@@ -19,6 +19,7 @@ function TodoItem({ todo, setMessage }) {
     // const [token] = useContext(TokenContext)
     const queryClient = useQueryClient();
     // const [isEditing, setIsEditing] = useState(false);
+    const [isDeleting, setIsDeleting] = useState('');
 
 
     const { mutate: updateTodo } = useMutation(
@@ -26,7 +27,15 @@ function TodoItem({ todo, setMessage }) {
         (updatedTodo) => updateTodoRequest(updatedTodo),
         {
             onSettled: () => {
-                queryClient.invalidateQueries('todos');
+                setIsDeleting(true);
+                setTimeout(() => {
+                    setIsDeleting(false)
+                    queryClient.invalidateQueries('todos');
+                }, 500)
+                setMessage('Tâche modifiée')
+                setTimeout(() => {
+                    setMessage('')
+                }, 3001)
             },
         }
     );
@@ -35,7 +44,11 @@ function TodoItem({ todo, setMessage }) {
         (deletedTodo) => deleteTodoRequest(deletedTodo),
         {
             onSettled: () => {
-                queryClient.invalidateQueries('todos');
+                setIsDeleting(true);
+                setTimeout(() => {
+                    setIsDeleting(false)
+                    queryClient.invalidateQueries('todos');
+                }, 500)
                 setMessage('Tâche supprimée')
                 setTimeout(() => {
                     setMessage('')
@@ -45,8 +58,9 @@ function TodoItem({ todo, setMessage }) {
     );
 
 
-    const completed = todo.completed ? 'done' : ''
+    const completed = todo.completed ? 'done' : '';
     const datePast = dayjs(todo.date).format("YYYY-MM-DD") < dayjs(new Date()).format("YYYY-MM-DD") ? 'past' : '';
+    const deleting = isDeleting ? 'deleting' : '';
 
     const daysLeft = (date) => {
         const date1 = dayjs(date);
@@ -61,8 +75,10 @@ function TodoItem({ todo, setMessage }) {
             return <p>{daysLeft(date)} jour restant</p>
         } else if (daysLeft(date) > 1) {
             return <p>{daysLeft(date)} jours restants</p>
-        } else {
+        } else if (daysLeft(date) === 0){
             return <p>jour J !</p>;
+        } else {
+            return <p>&nbsp;</p>
         }
     }
 
@@ -80,10 +96,14 @@ function TodoItem({ todo, setMessage }) {
 
     return (
 
-        <div className={`todo__item ${todo.category} ${completed} ${datePast}`}>
+        <div className={`todo__item ${todo.category} ${completed} ${datePast} ${deleting}`}>
             <div className='todo__header'>
-                <p><AccessTimeOutlinedIcon />{dayjs(todo.date).format("HH:mm")}</p>
-                <Checkbox className="checkbox" checked={todo.completed} color="success" onChange={() => updateTodo({ ...todo, completed: !todo.completed })} />
+                {datePast ?
+                    <p> Date expirée </p>
+                    :
+                    <p><AccessTimeOutlinedIcon />{dayjs(todo.date).format("HH:mm")}</p>
+                }
+                <Checkbox className="checkbox" checked={todo.completed} color="primary" onChange={() => updateTodo({ ...todo, completed: !todo.completed })} />
             </div>
             <div className='todo__main'>
 

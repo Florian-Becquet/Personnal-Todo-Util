@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import dayjs from "dayjs";
 // import { Preview } from '../../pages/notes/Preview';
 import { Link } from 'react-router-dom';
@@ -17,13 +17,17 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const NoteItem = ({ note, setMessage }) => {
   const queryClient = useQueryClient();
+  const [isDeleting, setIsDeleting] = useState('');
 
- 
   const { mutate: deleteNote } = useMutation(
     (deletedNote) => deleteNoteRequest(deletedNote),
     {
       onSettled: () => {
-        queryClient.invalidateQueries('notes');
+        setIsDeleting(true);
+        setTimeout(() => {
+          setIsDeleting(false)
+          queryClient.invalidateQueries('notes');
+        }, 500)
         setMessage('Note supprimée')
         setTimeout(() => {
           setMessage('')
@@ -32,11 +36,11 @@ const NoteItem = ({ note, setMessage }) => {
     }
   );
 
-
+  const deleting = isDeleting ? 'deleting' : '';
   return (
     //  <Link to={`/notes/${note._id}`}>ici</Link> 
 
-    <div className='note__item'>
+    <div className={`note__item ${deleting}`}>
       <h5> {note.title} </h5>
       <div className='note__option'>
         <Link to={`/notes/${note._id}`} state={{ note: note }}>

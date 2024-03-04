@@ -3,8 +3,9 @@ nav {
     width : 200px;
     background-color: var(--background);
     height : 100vh;
-    border-right : 1px solid black;
+    /* border-right : 1px solid black; */
     z-index: 99;
+    box-shadow: var(--outer-shadow);
 }
 
 nav .nav__wrapper {
