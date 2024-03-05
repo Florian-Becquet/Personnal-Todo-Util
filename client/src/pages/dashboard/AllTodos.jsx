@@ -107,47 +107,57 @@ const AllTodos = () => {
                 <Loader />
                 :
                 <div className='container'>
-                    <div className='todo__title'>
-                        <h2>Todo</h2>
+                    <div className='component__title'>
+                        <h2>All Todos</h2>
                     </div>
-                    <div className='todo__list'>
-                        <h2>En cours</h2>
-                        {arrayWithoutDuplon.length !== 0 ?
-                            arrayWithoutDuplon.map((day, index) =>
-                                <div key={index}>
-                                    <h1 style={{ fontSize: "32px", margin: "20px 0" }}>{day}</h1>
+                    <div className='todo__subtitle'>
+                        <div>
+                            <p>Tâches en cours </p>
+                        </div>
+                        <div>
+                            <p>Tâches complétées </p>
+                        </div>
+                    </div>
+                    <div className='todo'>
+                        <div className='inProgress'>
+                            {arrayWithoutDuplon.length !== 0 ?
+                                arrayWithoutDuplon.map((day, index) =>
+                                    <div key={index}>
+                                        <p>{day}</p>
 
-                                    <div className='todo__wrapper'>
-                                        {todos
-                                            .filter((todo) => dayjs(todo.date).format("dddd DD/MM") === day && todo.completed != true)
-                                            .map((todo) => {
-                                                return (<TodoItem setMessage={setMessage} todo={todo} key={todo._id} />)
-                                            })
-                                        }
+                                        <div className='todo__wrapper'>
+                                            {todos
+                                                .filter((todo) => dayjs(todo.date).format("dddd DD/MM") === day && todo.completed != true)
+                                                .map((todo) => {
+                                                    return (<TodoItem setMessage={setMessage} todo={todo} key={todo._id} />)
+                                                })
+                                            }
+                                        </div>
                                     </div>
+                                )
+                                :
+                                'Aucune tâche en cours'
+                            }
+                        </div>
+                        {TaskCompleted.length !== 0 ?
+                            <div className='completed'>
+                                <div className='todo__wrapper'>
+                                    {todos
+                                        .filter((todo) => todo.completed === true)
+                                        .map((todo) => {
+                                            return (<TodoItem setMessage={setMessage} todo={todo} key={todo._id} />)
+                                        })}
                                 </div>
-                            )
+                            </div>
+
                             :
-                            'Aucune tâche en cours'
+                            ''
+                        }
+
+                        {message &&
+                            <AlertMessage severity="success" children={message} />
                         }
                     </div>
-                    {TaskCompleted.length !== 0 ?
-                        <div className='todo__title'>
-                            <h2>Complétée</h2>
-                        </div>
-                        :
-                        ''
-                    }
-                    <div className='todo__wrapper'>
-                        {todos
-                            .filter((todo) => todo.completed === true)
-                            .map((todo) => {
-                                return (<TodoItem setMessage={setMessage} todo={todo} key={todo._id} />)
-                            })}
-                    </div>
-                    {message &&
-                        <AlertMessage severity="success" children={message} />
-                    }
                 </div>
             }
         </>

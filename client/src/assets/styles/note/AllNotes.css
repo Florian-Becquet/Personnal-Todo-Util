@@ -1,5 +1,7 @@
 .btn__category {
     display : flex;
+    justify-content: center;
+    align-items: center;
     gap : 2em;
     margin-bottom : 3em;
 }

@@ -68,6 +68,7 @@ const AllNotes = () => {
     }
   }
 
+
   return (
     <div className='container'>
       <div className='btn__category'>
@@ -79,8 +80,10 @@ const AllNotes = () => {
 
       <div className='notes__list'>
         {!isLoading ?
-
-          filterCategory()
+          filterCategory().length === 0 ?
+            <p>Aucune note pour cette catégorie ! </p>
+            :
+            filterCategory()
           :
           <Loader />
         }

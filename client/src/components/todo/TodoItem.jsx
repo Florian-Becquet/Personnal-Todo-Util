@@ -31,7 +31,7 @@ function TodoItem({ todo, setMessage }) {
                 setTimeout(() => {
                     setIsDeleting(false)
                     queryClient.invalidateQueries('todos');
-                }, 500)
+                }, 300)
                 setMessage('Tâche modifiée')
                 setTimeout(() => {
                     setMessage('')
@@ -72,11 +72,11 @@ function TodoItem({ todo, setMessage }) {
 
     const readDate = (date) => {
         if (daysLeft(date) === 1) {
-            return <p>{daysLeft(date)} jour restant</p>
+            return <p>demain</p>
         } else if (daysLeft(date) > 1) {
             return <p>{daysLeft(date)} jours restants</p>
-        } else if (daysLeft(date) === 0){
-            return <p>jour J !</p>;
+        } else if (daysLeft(date) === 0) {
+            return <p>aujourd'hui</p>;
         } else {
             return <p>&nbsp;</p>
         }
@@ -97,7 +97,29 @@ function TodoItem({ todo, setMessage }) {
     return (
 
         <div className={`todo__item ${todo.category} ${completed} ${datePast} ${deleting}`}>
-            <div className='todo__header'>
+            <div className='todo__top'>
+                <div className='todo__main'>
+                    <input type="checkbox" checked={todo.completed} onChange={() => updateTodo({ ...todo, completed: !todo.completed })} />
+                    <p>{todo.text}</p>
+                </div>
+                <div className='todo__options'>
+                    <Link to={`/dashboard/todosUpdate/${todo._id}`} state={{ todo: todo }}>
+                        <button><ModeEditOutlineOutlinedIcon /></button>
+                    </Link>
+                    <button onClick={() => deleteTodo(todo)}><DeleteIcon /></button>
+                </div>
+            </div>
+            <div className="todo__bottom">
+                {datePast ?
+                    <p> Date expirée </p>
+                    :
+                    <p>{dayjs(todo.date).format("HH:mm")}</p>
+                }
+                {readDate(todo.date)}
+                <div className={`todo__category ${todo.category}`}>{todo.category}</div>
+
+            </div>
+            {/* <div className='todo__header'>
                 {datePast ?
                     <p> Date expirée </p>
                     :
@@ -115,13 +137,12 @@ function TodoItem({ todo, setMessage }) {
 
                 <hr />
                 <div className='todo__options'>
-                    {/* <Button variant="outlined" color="primary" startIcon={<ModeEditOutlineOutlinedIcon />} onClick={() => setIsEditing(!isEditing)} /> */}
                     <Link to={`/dashboard/todosUpdate/${todo._id}`} state={{ todo: todo }}>
                         <Button variant="outlined" color="primary" startIcon={<ModeEditOutlineOutlinedIcon />} />
                     </Link>
                     <Button variant="outlined" color="error" startIcon={<DeleteIcon />} onClick={() => deleteTodo(todo)} />
                 </div>
-            </div>
+            </div> */}
 
             {/* {alertMessage()} */}
         </div>

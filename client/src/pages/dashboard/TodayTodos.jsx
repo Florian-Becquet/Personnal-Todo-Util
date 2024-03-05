@@ -132,64 +132,58 @@ const TodayTodos = () => {
         :
         <div className='container'>
           {/* <Button onClick={() => setShowNav(!showNav)} variant="contained">Ajouter une tâche</Button> */}
-          <div className='todo__title'>
-            <div>
-              <h2>Todo</h2>
-
-            </div>
-
-
-            <h2>{dayjs(new Date()).format("DD MMMM")}</h2>
+          <div className='component__title'>
+            <h2>Todo - {dayjs(new Date()).format("DD MMMM")}</h2>
+            
           </div>
           <div className='todo__subtitle'>
+            <div>
+              <p>Tâches en cours - {TaskToDo.length} </p>
+            </div>
+            <div>
+              {allTaskToDo.length !== 0 ?
+                <div className='pourcent'>
+                  <p>Tâches complétées - {Math.round(100 / allTaskToDo.length * TaskCompleted.length)} %</p>
+                  <div>
+                    <LinearProgress variant="determinate" value={Math.round(100 / allTaskToDo.length * TaskCompleted.length)} />
+                  </div>
+                </div>
+                :
+                ''
+              }
+            </div>
 
-            <p>{TaskToDo.length} tâches en cours</p>
-            {allTaskToDo.length !== 0 ?
-              // <div className='wrapper__pourcent'>
-              //   <div className='pourcent'>
-              //     <div style={{ width: `calc(100% / ${allTaskToDo.length} * ${TaskCompleted.length})` }}>
+          </div>
+          <div className='todo'>
+            <div className='inProgress'>
+              {todos
+                .filter((todo) => dayjs(new Date()).format("dddd DD/MM") === dayjs(todo.date).format("dddd DD/MM") && todo.completed != true)
+                .map((todo) => {
+                  {
+                    return (
+                      <TodoItem todo={todo} key={todo._id} spacing={2} setMessage={setMessage} />
+                    )
+                  }
 
-              //     </div>
-              //   </div>
-              //   <p>{Math.round(100 / allTaskToDo.length * TaskCompleted.length)} % complétées</p>
-              // </div>
-              <>
-                <Box sx={{ width: '150px' }} className='pourcent'>
-                  <LinearProgress variant="determinate" value={Math.round(100 / allTaskToDo.length * TaskCompleted.length)} />
-                  <p>{Math.round(100 / allTaskToDo.length * TaskCompleted.length)} % complétées</p>
-                </Box>
-              </>
+                })
+              }
+            </div>
+            {TaskCompleted.length !== 0 ?
+              <div className='completed'>
+                {/* <div className='todo__title'>
+                  <h2>Complétée</h2>
+                </div> */}
+                {/* <div className='todo__wrapper'> */}
+                {todos
+                  .filter((todo) => dayjs(new Date()).format("dddd DD/MM") === dayjs(todo.date).format("dddd DD/MM") && todo.completed === true)
+                  .map((todo) => {
+                    return (<TodoItem todo={todo} key={todo._id} setMessage={setMessage} />)
+                  })
+                }
+                {/* </div> */}
+              </div>
               :
               ''
-            }
-          </div>
-          <div className='todo__wrapper'>
-
-            {todos
-              .filter((todo) => dayjs(new Date()).format("dddd DD/MM") === dayjs(todo.date).format("dddd DD/MM") && todo.completed != true)
-              .map((todo) => {
-                {
-                  return (
-                      <TodoItem todo={todo} key={todo._id} spacing={2} setMessage={setMessage} />
-                  )
-                }
-
-              })
-            }
-          </div>
-          {TaskCompleted.length !== 0 ?
-            <div className='todo__title'>
-              <h2>Complétée</h2>
-            </div>
-            :
-            ''
-          }
-          <div className='todo__wrapper'>
-            {todos
-              .filter((todo) => dayjs(new Date()).format("dddd DD/MM") === dayjs(todo.date).format("dddd DD/MM") && todo.completed === true)
-              .map((todo) => {
-                return (<TodoItem todo={todo} key={todo._id} setMessage={setMessage} />)
-              })
             }
           </div>
         </div>
