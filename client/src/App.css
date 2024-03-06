@@ -35,6 +35,8 @@
   --fs-xxl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
   --fs-xxxl: clamp(3.05rem, 3.54vw + 2.17rem, 5rem);
   --fs-4xl: clamp(3.55rem, 4.04vw + 2.47rem, 6rem);
+
+  --arrow-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Arrow-down.svg);
 }
 
 .dark:root {
@@ -85,7 +87,7 @@ main, .main {
 .container {
   width : 90%;
   margin : auto;
-  padding : 4em 0;
+  padding : var(--fs-xxl) 0;
 }
 
 
@@ -96,5 +98,9 @@ main, .main {
 
   .container {
     width : 90%
+  }
+
+  .hide__lg {
+    display : none;
   }
 }

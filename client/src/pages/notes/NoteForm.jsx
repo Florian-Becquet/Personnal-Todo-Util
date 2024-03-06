@@ -67,7 +67,7 @@ function CreateNoteForm() {
         <h2>Ajouter une note</h2>
 
       </div>
-      <form
+      <form id="addNote"
         onSubmit={(e) => {
           e.preventDefault();
           if (!text || !title) return;
@@ -83,14 +83,15 @@ function CreateNoteForm() {
         }}
       >
         {/* <label htmlFor="title">Titre</label> */}
-        <input id="title" type="text" onChange={(e) => setTitle(e.target.value)} placeholder='Saisir un titre'/>
+        {/* <input id="title" type="text" onChange={(e) => setTitle(e.target.value)} placeholder='Saisir un titre' />
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="courses">Courses</option>
           <option value="personnel">Personnel</option>
           <option value="autre">Autre</option>
-        </select>
-        {/* <TextField label="Titre" variant="standard" value={title} onChange={(e) => setTitle(e.target.value)} required sx={{ mb: 3 }} /> */}
-        {/* <FormControl fullWidth sx={{ mt: 3 }} className='select__note'>
+        </select> */}
+
+        <TextField label="Titre" variant="outlined" value={title} onChange={(e) => setTitle(e.target.value)} required sx={{ mb: 3 }} /> 
+         <FormControl fullWidth sx={{ mt: 3 }} className='select__note'>
           <InputLabel required id="demo-simple-select-label">Catégorie</InputLabel>
           <Select
             labelId="demo-simple-select-label"
@@ -103,7 +104,7 @@ function CreateNoteForm() {
             <MenuItem value="personnel">Personnel</MenuItem>
             <MenuItem value="autre">Autre</MenuItem>
           </Select>
-        </FormControl> */}
+        </FormControl> 
         <div className='Editor__Preview'>
           <Editor text={text} setText={setText} />
           <Preview text={text} />
@@ -120,7 +121,7 @@ function CreateNoteForm() {
           <AlertMessage severity="error" children="Une erreur est survenue, veuillez réessayer !" />
         }
       </form>
-    </div>
+    </div >
   );
 };
 

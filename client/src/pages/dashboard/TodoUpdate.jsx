@@ -42,7 +42,7 @@ const TodoUpdate = () => {
         e.preventDefault();
         axios.put(`http://localhost:8080/todos/${todo._id}`, values)
             .then(res => {
-                navigate('/dashboard/allTasks', { message: 'Tâche correctement modifiée' });
+                navigate('/todos/allTasks', { message: 'Tâche correctement modifiée' });
                 // message = 'Tâche correctement modifiée'
             })
             .catch(err => console.log(err))

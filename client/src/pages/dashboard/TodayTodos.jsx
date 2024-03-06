@@ -137,14 +137,14 @@ const TodayTodos = () => {
             <h2>Todo - {dayjs(new Date()).format("DD MMMM")}</h2>
 
           </div>
-          <div className='todo__subtitle'>
+          {/* <div className='todo__subtitle'>
             <div>
               <p>Tâches en cours - {TaskToDo.length} </p>
             </div>
             <div>
               {allTaskToDo.length !== 0 ?
                 <div className='pourcent'>
-                  <p>Tâches complétées - {Math.round(100 / allTaskToDo.length * TaskCompleted.length)} %</p>
+                  <p><span className='hide__lg'>Complétées -</span>  {Math.round(100 / allTaskToDo.length * TaskCompleted.length)}&nbsp;%</p>
                   <div>
                     <LinearProgress variant="determinate" value={Math.round(100 / allTaskToDo.length * TaskCompleted.length)} />
                   </div>
@@ -154,9 +154,14 @@ const TodayTodos = () => {
               }
             </div>
 
-          </div>
+          </div> */}
           <div className='todo'>
             <div className='inProgress'>
+              <div className='todo__subtitle'>
+                {/* <div> */}
+                <p>Tâches en cours - {TaskToDo.length} </p>
+                {/* </div> */}
+              </div>
               {todos
                 .filter((todo) => dayjs(new Date()).format("dddd DD/MM") === dayjs(todo.date).format("dddd DD/MM") && todo.completed != true)
                 .map((todo) => {
@@ -173,6 +178,22 @@ const TodayTodos = () => {
             </div>
             {TaskCompleted.length !== 0 ?
               <div className='completed'>
+                <div className='todo__subtitle'>
+
+                  {/* <div> */}
+                  {allTaskToDo.length !== 0 ?
+                    <div className='pourcent'>
+                      <p>Complétées - {Math.round(100 / allTaskToDo.length * TaskCompleted.length)}&nbsp;%</p>
+                      <div>
+                        <LinearProgress variant="determinate" value={Math.round(100 / allTaskToDo.length * TaskCompleted.length)} />
+                      </div>
+                    </div>
+                    :
+                    ''
+                  }
+                  {/* </div> */}
+
+                </div>
                 {/* <div className='todo__title'>
                   <h2>Complétée</h2>
                 </div> */}

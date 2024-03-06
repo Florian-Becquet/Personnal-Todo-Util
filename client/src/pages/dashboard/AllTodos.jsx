@@ -110,16 +110,21 @@ const AllTodos = () => {
                     <div className='component__title'>
                         <h2>All Todos</h2>
                     </div>
-                    <div className='todo__subtitle'>
+                    {/* <div className='todo__subtitle'>
                         <div>
                             <p>Tâches en cours </p>
                         </div>
                         <div>
                             <p>Tâches complétées </p>
                         </div>
-                    </div>
+                    </div> */}
                     <div className='todo'>
                         <div className='inProgress'>
+                            <div className='todo__subtitle'>
+                                <div>
+                                    <p>Tâches en cours </p>
+                                </div>
+                            </div>
                             {arrayWithoutDuplon.length !== 0 ?
                                 arrayWithoutDuplon.map((day, index) =>
                                     <div key={index}>
@@ -141,6 +146,11 @@ const AllTodos = () => {
                         </div>
                         {TaskCompleted.length !== 0 ?
                             <div className='completed'>
+                                <div className='todo__subtitle'>
+                                    <div>
+                                        <p>Tâches complétées </p>
+                                    </div>
+                                </div>
                                 <div className='todo__wrapper'>
                                     {todos
                                         .filter((todo) => todo.completed === true)

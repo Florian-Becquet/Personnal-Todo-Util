@@ -1,3 +1,8 @@
+.container > .weather {
+    width : 80%;
+    margin : auto;
+}
+
 .main__weather {
     display: flex;
     align-items: center;
@@ -5,10 +10,15 @@
     gap : 2rem;
 }
 
-header {
+.weather header {
     display : flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
+    margin-bottom : var(--fs-lg)
+}
+
+.weather header h1 svg {
+    margin-right : 10px;
 }
 
 .main__weather img {
@@ -35,20 +45,28 @@ header {
     gap : 0.2rem;
 }
 
-.weather_hour {
+.weather__hour {
     display : grid;
     grid-template-columns: repeat(2, 1fr);
+    margin-top : var(--fs-lg);
 }
 
-.weather_hour div div {
+.weather__hour div div {
     display : flex;
     justify-content: center;
     align-items: center;
     gap : 1rem;
 }
 
-.MuiPaper-root {
-    margin-top : 20px;
+.weather__hour div div p{
+    display : flex;
+    align-items: center;
+    gap : 0.5em;
+}
+
+.weather__hour img {
+    width : 40px;
+    height : 40px;
 }
 
 .weather__otherDays {
@@ -56,12 +74,37 @@ header {
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin-top : var(--fs-xxxl)
 }
 
-.weather__otherDays div {
-    width : 50%;
+.weather__otherDays > div {
+    width : 40%;
+    box-shadow:  0 0 2px black;
+    margin : 0 10px;
+}
+
+.weather__otherDays div h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap : 0.5em;
+}
+
+.weather__otherDays div div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap : 0.5em;
+    margin : 10px auto;
+}
+
+.weather__otherDays div div p{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    gap : 0.5em;
 }
 
 .weather__otherDays img {
-    margin : auto;
+    margin-left : 10px;
 }
