@@ -6,18 +6,29 @@
     display : flex;
     /* align-items: center; */
     width : 100%;
-    border : 1px solid #ccc;
-    border-radius: 5px;
+    border : 1px solid black;
+    /* border-radius: 5px; */
 }
 
 .editor {
     width : 50%;
     border-right : 2px solid black;
-    padding : 20px;
+    /* padding : 20px; */
 }
 
+.editor > div, .preview > div:first-of-type {
+    padding : 15px 30px;
+    background-color : black;
+    color : white;
+}
+
+.preview > div:nth-of-type(2) {
+    padding : 30px;
+}
+
+
 .preview {
-    padding : 20px;
+    /* padding : 20px; */
     width : 50%;
 }
 
@@ -32,7 +43,7 @@
     min-height : 500px;
     border : none;
     outline : none;
-    padding : 10px 0;
+    padding : 10px 30px;
 }
 
 .preview .prose {

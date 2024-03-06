@@ -19,20 +19,21 @@
 
 .form__wrapper {
     position : fixed;
-    top : 49px;
+    /* top : 49px; */
     /* top : 0; */
     right : 0;
+    top : 0;
     /* box-shadow: 0 0 4px var(--text); */
     padding : 20px;
-    transform : translate(100%);
+    transform : translateX(100%);
     transition : transform 0.5s ease-in-out;
     z-index: 10000;
     background-color: var(--background);
     opacity : 0.98;
     color : var(--text);
     height : 100%;
-    width : calc(100vw - 200px);
-    /* width : 100vw; */
+    /* width : calc(100vw - 200px); */
+    width : 100vw;
 }
 
 .form__wrapper.show {
@@ -52,13 +53,16 @@
 
 .form__wrapper .close__form {
     position : absolute;
-    left : 20px;
-    top : 20px;
+    right : 20px;
+    top : 100px;
     z-index: 1;
     border : 1px solid red;
     padding : 8px;
     color : red;
     cursor: pointer;
+    display : flex;
+    justify-content: center;
+    align-items: center;
 }
 
 form > h1 {

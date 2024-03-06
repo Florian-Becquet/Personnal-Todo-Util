@@ -15,6 +15,8 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import AlertMessage from '../common/AlertMessage';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import EventAvailableOutlinedIcon from '@mui/icons-material/EventAvailableOutlined';
+import EventBusyOutlinedIcon from '@mui/icons-material/EventBusyOutlined';
 function TodoItem({ todo, setMessage }) {
     // const [token] = useContext(TokenContext)
     const queryClient = useQueryClient();
@@ -72,13 +74,14 @@ function TodoItem({ todo, setMessage }) {
 
     const readDate = (date) => {
         if (daysLeft(date) === 1) {
-            return <p>demain</p>
+            return <p><EventAvailableOutlinedIcon />demain</p>
         } else if (daysLeft(date) > 1) {
-            return <p>{daysLeft(date)} jours restants</p>
+            return <p><EventAvailableOutlinedIcon /> {daysLeft(date)} jours restants</p>
         } else if (daysLeft(date) === 0) {
-            return <p>aujourd'hui</p>;
+            return <p><EventAvailableOutlinedIcon /> aujourd'hui</p>;
         } else {
-            return <p>&nbsp;</p>
+            return ''
+            // return <p><EventBusyOutlinedIcon /></p>
         }
     }
 
@@ -103,7 +106,7 @@ function TodoItem({ todo, setMessage }) {
                     <p>{todo.text}</p>
                 </div>
                 <div className='todo__options'>
-                    <Link to={`/dashboard/todosUpdate/${todo._id}`} state={{ todo: todo }}>
+                    <Link to={`/todos/update/${todo._id}`} state={{ todo: todo }}>
                         <button><ModeEditOutlineOutlinedIcon /></button>
                     </Link>
                     <button onClick={() => deleteTodo(todo)}><DeleteIcon /></button>
@@ -115,7 +118,9 @@ function TodoItem({ todo, setMessage }) {
                     :
                     <p>{dayjs(todo.date).format("HH:mm")}</p>
                 }
+
                 {readDate(todo.date)}
+
                 <div className={`todo__category ${todo.category}`}>{todo.category}</div>
 
             </div>

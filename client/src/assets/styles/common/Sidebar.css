@@ -1,9 +1,8 @@
-nav {
+/* nav {
     position : fixed;
     width : 200px;
     background-color: var(--background);
     height : 100vh;
-    /* border-right : 1px solid black; */
     z-index: 99;
     box-shadow: var(--outer-shadow);
 }
@@ -47,4 +46,49 @@ nav .nav__wrapper ul li ul a li{
     nav {
         display : none;
     }
+} */
+
+
+
+ nav {
+    position : fixed;
+    width : 200px;
+    background-color: var(--background);
+    margin-top : 48px;
+    height : calc(100vh - 48px);
+    z-index: 98;
+    box-shadow: var(--outer-shadow);
 }
+
+
+nav .nav__wrapper ul {
+    margin : 70px auto;
+    width : 80%;
+}
+
+
+nav .nav__wrapper ul a {
+    display : flex;
+    margin : 10px 0;
+    text-decoration: none;
+    color : white;
+}
+
+nav .nav__wrapper ul li {
+    display : flex;
+    align-items: center;
+}
+
+nav .nav__wrapper ul a:nth-of-type(2), nav .nav__wrapper ul a:nth-of-type(4){
+    margin-bottom : 30px;
+}
+
+nav .nav__wrapper ul li svg{
+    margin-right : 10px;
+}
+
+@media screen and (max-width: 1024px) {
+    nav {
+        display : none;
+    }
+} 

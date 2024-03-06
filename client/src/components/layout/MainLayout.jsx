@@ -7,10 +7,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import TodayTodos from '../../pages/dashboard/TodayTodos';
 
 const MainLayout = () => {
-    const href = window.location.href
-    if(href === "/") {
-        console.log(ok);
-    }
+    // const href = window.location.href
+
     const location = useLocation();
     const pathname = location.pathname;
 
@@ -19,11 +17,11 @@ const MainLayout = () => {
             <Header />
             <Sidebar />
             {pathname === '/' ?
-            <div className='main'>
-            <TodayTodos />
-            </div>
-            :
-            ''
+                <div className='main'>
+                    <TodayTodos />
+                </div>
+                :
+                ''
             }
             <main>
                 <Outlet />

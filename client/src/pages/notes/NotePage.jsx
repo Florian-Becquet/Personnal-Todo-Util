@@ -48,7 +48,7 @@ const navigate = useNavigate();
     //     {/* <Editor note={note} text={note.text} setText={setText} width='100%'/> */}
     // </div>
 
-<div className='singleNote container  '>
+<div className='singleNote container'>
 <form onSubmit={handleSubmit}>
     {/* <input type='text' name="title" value={values.text} onChange={e => setValues({...values, text: e.target.value})}/> */}
     {/* <input type='text' name="category" value={values.category} onChange={e => setValues({...values, category: e.target.value})}/> */}

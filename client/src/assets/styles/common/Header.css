@@ -1,15 +1,28 @@
 body > #root > header {
     position: fixed;
     display : flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     background-color : var(--background);
-    padding : 10px;
-    width : calc(100vw - 200px);
-    left : 200px;
+    /* padding : 10px; */
+    width : 100vw;
+    height : 48px;
+    /* left : 200px; */
     /* border-bottom : 1px solid black; */
     z-index : 99;
     box-shadow: var(--outer-shadow);
+padding : 0 10em;
+}
+
+.header__home, .header__notifications {
+    display : flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__home svg , .header__notifications svg{
+    margin : 0 10px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1024px) {

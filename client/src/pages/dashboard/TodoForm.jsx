@@ -14,6 +14,7 @@ import ClipLoader from 'react-spinners/ClipLoader'
 import '../../assets/styles/todo/TodoForm.css'
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import Loader from '../../components/common/Loader';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 
 function TodoForm({ showNav, setShowNav }) {
@@ -39,7 +40,7 @@ function TodoForm({ showNav, setShowNav }) {
   return (
     <>
       <div className={showNav ? 'form__wrapper show' : 'form__wrapper'}>
-        <button className='close__form' onClick={() => setShowNav(!showNav)}>X</button>
+        {/* <button className='close__form' onClick={() => setShowNav(!showNav)}>X</button> */}
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -55,6 +56,7 @@ function TodoForm({ showNav, setShowNav }) {
             // setShowNav(!showNav)
           }}
         >
+          <div className='close__form' onClick={() => setShowNav(!showNav)}><CloseOutlinedIcon /> </div>
           <h1>Ajouter une nouvelle tâche</h1>
           <TextField label="Titre" variant="outlined" value={text} onChange={(e) => setText(e.target.value)} required sx={{ mb: 3 }} />
           <LocalizationProvider locale={fr} dateAdapter={AdapterDayjs}>

@@ -15,7 +15,7 @@ import TodoForm from './TodoForm';
 import AlertMessage from '../../components/common/AlertMessage';
 import { Box, Button, LinearProgress, TextField } from '@mui/material';
 import Loader from '../../components/common/Loader';
-
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
 // import "../../components/styles/TodoPage.css"
 // import Weather from '../../components/Weather';
@@ -131,10 +131,11 @@ const TodayTodos = () => {
         <Loader />
         :
         <div className='container'>
+          <TodoForm showNav={showNav} setShowNav={setShowNav} />
           {/* <Button onClick={() => setShowNav(!showNav)} variant="contained">Ajouter une tâche</Button> */}
           <div className='component__title'>
             <h2>Todo - {dayjs(new Date()).format("DD MMMM")}</h2>
-            
+
           </div>
           <div className='todo__subtitle'>
             <div>
@@ -167,6 +168,8 @@ const TodayTodos = () => {
 
                 })
               }
+              <p className="addTask" onClick={() => setShowNav(!showNav)}><AddOutlinedIcon /> Ajouter une tâche</p>
+              {/* <Button onClick={() => setShowNav(!showNav)} variant="contained">Ajouter une tâche</Button> */}
             </div>
             {TaskCompleted.length !== 0 ?
               <div className='completed'>

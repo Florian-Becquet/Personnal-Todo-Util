@@ -19,11 +19,11 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />} >
-        <Route path="/dashboard/today" element={<TodayTodos />} />
-        <Route path="/dashboard/allTasks" element={<AllTodos />} />
-        <Route path="/dashboard/todosUpdate/:id" element={<TodoUpdate />} />
+        <Route path="/todos/today" element={<TodayTodos />} />
+        <Route path="/todos/allTasks" element={<AllTodos />} />
+        <Route path="/todos/update/:id" element={<TodoUpdate />} />
         <Route path="/annexes/weather" element={<Weather />} />
-        <Route path="/notes/createNote" element={<NoteForm />} />
+        <Route path="notes/createNote" element={<NoteForm />} />
         <Route path="/notes/allNotes" element={<AllNotes />} />
         <Route path="/notes/:id" element={<NotePage />} />
       </Route>
