@@ -69,7 +69,7 @@ function TodoForm({ showNav, setShowNav }) {
               disablePast
             />
           </LocalizationProvider>
-          <FormControl fullWidth sx={{ mt: 3 }}>
+          <FormControl fullWidth sx={{ mt: 3, zIndex: 11000 }}>
 
             <InputLabel required id="demo-simple-select-label">Catégorie</InputLabel>
             <Select
