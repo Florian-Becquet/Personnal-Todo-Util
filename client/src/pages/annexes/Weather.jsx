@@ -40,28 +40,11 @@ const query = 'apple';
             .catch(err => console.log(err))
     }
     
-    const fetchFoodData = async () => {
-        await axios.get(`https://platform.fatsecret.com/rest/server.api?` +
-        `method=food.search&` + 
-        `search_expression=${query}&` +
-        `format=json&` +
-        `oauth_consumer_key=${appId}&` +
-        `oauth_signature_method=HMAC-SHA1&` +
-        `oauth_timestamp=${Math.floor(Date.now() / 1000)}&` +
-        `oauth_nonce=${Math.floor(Math.random() * 1000000000)}`)
-        .then(response => {
-            console.log(response.data);
-        })
-        .catch(error => {
-            console.log(error.response.data);
-        });
-    }
 
 
 
     useEffect(() => {
         fetchWeatherData();
-        fetchFoodData();
     }, [])
 
     const dateDay = dayjs(new Date()).format("YYYY-MM-DD");
