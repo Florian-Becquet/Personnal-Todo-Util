@@ -28,7 +28,7 @@ console.log(values);
 const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:8080/notes/${note._id}`, values)
+        axios.put(`https://personnal-todo-util.onrender.com/notes/${note._id}`, values)
             .then(res => {
                 navigate('/notes/allNotes', { message: 'Note correctement modifiée' });
                 // message = 'Tâche correctement modifiée'
