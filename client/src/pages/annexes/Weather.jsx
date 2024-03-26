@@ -18,9 +18,7 @@ import Loader from "../../components/common/Loader";
 const Weather = () => {
     const [weatherData, setWeatherData] = useState('');
 
-    const appId = 'e15f892e5580412da38d8e4042d7c612';
-const appKey = 'fcca14ab3991494babda90c15e28943f';
-const query = 'apple';
+
 
     // const fetchWeatherData = () => {
     //     axios.get(

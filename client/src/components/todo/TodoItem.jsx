@@ -17,6 +17,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import EventAvailableOutlinedIcon from '@mui/icons-material/EventAvailableOutlined';
 import EventBusyOutlinedIcon from '@mui/icons-material/EventBusyOutlined';
+import Loader from '../common/Loader';
 function TodoItem({ todo, setMessage }) {
     // const [token] = useContext(TokenContext)
     const queryClient = useQueryClient();
@@ -24,16 +25,16 @@ function TodoItem({ todo, setMessage }) {
     const [isDeleting, setIsDeleting] = useState('');
 
 
-    const { mutate: updateTodo } = useMutation(
+    const { isLoading: updateIsLoading, mutate: updateTodo } = useMutation(
         // (updatedTodo) => updateTodoRequest(updatedTodo, token),
         (updatedTodo) => updateTodoRequest(updatedTodo),
         {
             onSettled: () => {
-                setIsDeleting(true);
-                setTimeout(() => {
-                    setIsDeleting(false)
-                    queryClient.invalidateQueries('todos');
-                }, 300)
+                // setIsDeleting(true);
+                // setTimeout(() => {
+                //     setIsDeleting(false)
+                // }, 300)
+                queryClient.invalidateQueries('todos');
                 setMessage('Tâche modifiée')
                 setTimeout(() => {
                     setMessage('')
@@ -46,11 +47,11 @@ function TodoItem({ todo, setMessage }) {
         (deletedTodo) => deleteTodoRequest(deletedTodo),
         {
             onSettled: () => {
-                setIsDeleting(true);
-                setTimeout(() => {
-                    setIsDeleting(false)
-                    queryClient.invalidateQueries('todos');
-                }, 500)
+                // setIsDeleting(true);
+                // setTimeout(() => {
+                //     setIsDeleting(false)
+                // }, 500)
+                queryClient.invalidateQueries('todos');
                 setMessage('Tâche supprimée')
                 setTimeout(() => {
                     setMessage('')
@@ -62,7 +63,7 @@ function TodoItem({ todo, setMessage }) {
 
     const completed = todo.completed ? 'done' : '';
     const datePast = dayjs(todo.date).format("YYYY-MM-DD") < dayjs(new Date()).format("YYYY-MM-DD") ? 'past' : '';
-    const deleting = isDeleting ? 'deleting' : '';
+    // const deleting = isDeleting ? 'deleting' : '';
 
     const daysLeft = (date) => {
         const date1 = dayjs(date);
@@ -99,7 +100,7 @@ function TodoItem({ todo, setMessage }) {
 
     return (
 
-        <div className={`todo__item ${todo.category} ${completed} ${datePast} ${deleting}`}>
+        <div className={`todo__item ${todo.category} ${completed} ${datePast}`}>
             <div className='todo__top'>
                 <div className='todo__main'>
                     <input type="checkbox" checked={todo.completed} onChange={() => updateTodo({ ...todo, completed: !todo.completed })} />
@@ -124,32 +125,9 @@ function TodoItem({ todo, setMessage }) {
                 <div className={`todo__category ${todo.category}`}>{todo.category}</div>
 
             </div>
-            {/* <div className='todo__header'>
-                {datePast ?
-                    <p> Date expirée </p>
-                    :
-                    <p><AccessTimeOutlinedIcon />{dayjs(todo.date).format("HH:mm")}</p>
-                }
-                <Checkbox className="checkbox" checked={todo.completed} color="primary" onChange={() => updateTodo({ ...todo, completed: !todo.completed })} />
-            </div>
-            <div className='todo__main'>
-
-                <h3>{todo.text}</h3>
-                <Chip className={`todo__category ${todo.category}`} label={todo.category} />
-            </div>
-            <div className='todo__footer'>
-                {readDate(todo.date)}
-
-                <hr />
-                <div className='todo__options'>
-                    <Link to={`/dashboard/todosUpdate/${todo._id}`} state={{ todo: todo }}>
-                        <Button variant="outlined" color="primary" startIcon={<ModeEditOutlineOutlinedIcon />} />
-                    </Link>
-                    <Button variant="outlined" color="error" startIcon={<DeleteIcon />} onClick={() => deleteTodo(todo)} />
-                </div>
-            </div> */}
-
-            {/* {alertMessage()} */}
+            {updateIsLoading &&
+                <Loader />
+            }
         </div>
 
     )

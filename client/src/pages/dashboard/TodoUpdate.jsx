@@ -14,7 +14,6 @@ const TodoUpdate = () => {
     const location = useLocation();
     const todo = location.state.todo
     const message = location.state.messageUpdate
-    console.log(message);
 
     const [values, setValues] = useState({
         id: todo._id,
@@ -23,7 +22,6 @@ const TodoUpdate = () => {
         category: todo.category,
         currentDate: todo.currentDate
     })
-    console.log(values);
 
     // const { mutate: updateTodo } = useMutation(
     //     // (updatedTodo) => updateTodoRequest(updatedTodo, token),
@@ -40,7 +38,7 @@ const TodoUpdate = () => {
     const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:8080/todos/${todo._id}`, values)
+        axios.put(`https://personnal-todo-util.onrender.com/todos/${todo._id}`, values)
             .then(res => {
                 navigate('/todos/allTasks', { message: 'Tâche correctement modifiée' });
                 // message = 'Tâche correctement modifiée'
@@ -51,9 +49,6 @@ const TodoUpdate = () => {
     return (
         <div className='form__update container  '>
             <form onSubmit={handleSubmit}>
-                {/* <input type='text' name="title" value={values.text} onChange={e => setValues({...values, text: e.target.value})}/> */}
-                {/* <input type='text' name="category" value={values.category} onChange={e => setValues({...values, category: e.target.value})}/> */}
-                {/* {text} */}
                 <h1>Editer la tâche</h1>
                 <TextField label="Titre" variant="outlined" value={values.text} onChange={e => setValues({ ...values, text: e.target.value })} required sx={{ mb: 3 }} />
                 <LocalizationProvider locale={fr} dateAdapter={AdapterDayjs}>
@@ -67,7 +62,6 @@ const TodoUpdate = () => {
                     />
                 </LocalizationProvider>
                 <FormControl fullWidth sx={{ mt: 3 }}>
-
                     <InputLabel required id="demo-simple-select-label">Catégorie</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
@@ -85,7 +79,6 @@ const TodoUpdate = () => {
                     <Button variant="contained" endIcon={<SendIcon />} type='submit' sx={{ mt: 3, width: "50%", mx: 'auto' }}>
                         Sauvegarder
                     </Button>
-                    {/* <input type="hidden" value={currentDate}></input> */}
                 </FormControl>
             </form>
         </div>

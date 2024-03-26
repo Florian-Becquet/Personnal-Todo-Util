@@ -381,7 +381,7 @@
 
 .deleting {
     opacity: 0.5;
-    animation: opacity .3s
+    /* animation: opacity .3s */
 }
 
 @keyframes opacity {

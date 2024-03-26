@@ -23,11 +23,11 @@ const NoteItem = ({ note, setMessage }) => {
     (deletedNote) => deleteNoteRequest(deletedNote),
     {
       onSettled: () => {
-        setIsDeleting(true);
-        setTimeout(() => {
-          setIsDeleting(false)
-          queryClient.invalidateQueries('notes');
-        }, 500)
+        // setIsDeleting(true);
+        // setTimeout(() => {
+        //   setIsDeleting(false)
+        // }, 500)
+        queryClient.invalidateQueries('notes');
         setMessage('Note supprimée')
         setTimeout(() => {
           setMessage('')
