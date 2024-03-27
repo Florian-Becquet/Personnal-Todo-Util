@@ -15,27 +15,32 @@ const navItems = [
     {
         title : 'Aujourd\'hui',
         path: 'todos/today',
-        icon: <TodayIcon />
+        icon: <TodayIcon />,
+        className: 'today'
     },
     {
         title : 'A venir',
         path: 'todos/allTasks',
-        icon: <CalendarMonthIcon />
+        icon: <CalendarMonthIcon />,
+        className: 'allTasks'
     },
     {
         title : 'Ajouter une note',
         path: 'notes/createNote',
-        icon: <EditNoteIcon />
+        icon: <EditNoteIcon />,
+        className: 'createNote'
     },
     {
         title : 'Toutes les notes',
         path: 'notes/allNotes',
-        icon: <ArticleIcon />
+        icon: <ArticleIcon />,
+        className: 'allNotes'
     },
     {
         title : 'Météo',
         path: 'annexes/weather',
-        icon: <CloudOutlinedIcon />
+        icon: <CloudOutlinedIcon />,
+        className: 'meteo'
     }
 ]
 
