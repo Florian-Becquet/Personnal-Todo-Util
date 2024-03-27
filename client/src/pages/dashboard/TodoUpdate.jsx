@@ -34,6 +34,8 @@ const TodoUpdate = () => {
     // );
 
     const today = dayjs();
+    let expiryDate2 = new Date(Date.now() + 2 * (60 * 60 * 1000));
+    console.log(expiryDate2);
 
     const navigate = useNavigate();
     const handleSubmit = (e) => {
@@ -59,6 +61,11 @@ const TodoUpdate = () => {
                         ampm={false}
                         defaultValue={today}
                         disablePast
+                        slotProps={{
+                            textField: {
+                                error: false,
+                            },
+                        }}
                     />
                 </LocalizationProvider>
                 <FormControl fullWidth sx={{ mt: 3 }}>
@@ -69,7 +76,6 @@ const TodoUpdate = () => {
                         value={values.category}
                         label="Catégorie *"
                         onChange={e => setValues({ ...values, category: e.target.value })}
-
                     >
                         <MenuItem value="personnel">Personnel</MenuItem>
                         <MenuItem value="travail">Travail</MenuItem>

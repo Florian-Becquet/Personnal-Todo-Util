@@ -6,6 +6,12 @@
     margin-bottom : 3em;
 }
 
+.btn__category button {
+    background-color: var(--background);
+    font-size: var(--fs-sm);
+    color : var(--text)
+}
+
 .note__option button {
     min-width : 35px!important;
     width : 55px;
@@ -31,4 +37,14 @@
     margin : 0.5em 1em;
 }
 
+@media screen and (max-width: 1024px) {
+    .btn__category {
+        gap : 0.2em;
+    }
 
+    .note__item {
+        width : 100%;
+        margin : 0;
+    }
+    
+}

@@ -43,7 +43,7 @@ function TodoItem({ todo, setMessage }) {
         }
     );
 
-    const { mutate: deleteTodo } = useMutation(
+    const { isLoading: deleteIsLoading, mutate: deleteTodo } = useMutation(
         (deletedTodo) => deleteTodoRequest(deletedTodo),
         {
             onSettled: () => {
@@ -126,6 +126,9 @@ function TodoItem({ todo, setMessage }) {
 
             </div>
             {updateIsLoading &&
+                <Loader />
+            }
+            {deleteIsLoading && 
                 <Loader />
             }
         </div>

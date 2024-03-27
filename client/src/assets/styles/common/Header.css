@@ -25,9 +25,31 @@ padding : 0 10em;
     cursor: pointer;
 }
 
+.opacityLow {
+    opacity : 0.2;
+    cursor: not-allowed!important;
+}
+
+header svg {
+    color : var(--text)!important;
+    transition: color 0.3s;
+}
+
+header svg:hover {
+    color : white!important;
+    transition: color 0.3s;
+}
+
+@media screen and (min-width: 1024px) {
+    .hide__lg {
+        display: none!important;
+    }
+}
+
 @media screen and (max-width: 1024px) {
     body > #root > header {
         width : 100vw;
         left : 0;
+        padding : 0;
     }
 }

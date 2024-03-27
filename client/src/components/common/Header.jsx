@@ -17,23 +17,16 @@ const Header = () => {
   const [showNav, setShowNav] = useState(false);
   return (
     <header>
-            <TodoForm showNav={showNav} setShowNav={setShowNav} />
-            {/* <Button onClick={() => setShowNav(!showNav)} variant="contained">Ajouter une tâche</Button> */}
-
-        <div className='header__home'>
-          {/* <MenuIcon /> */}
-          <MenuOutlinedIcon className='hide__lg'/>
-          <Link to="/"><HomeOutlinedIcon /></Link>
-        </div>
-        <div className='header__notifications'>
-            {/* <Button onClick={() => setShowNav(!showNav)} variant="contained">Ajouter une tâche</Button> */}
-            <AddOutlinedIcon onClick={() => setShowNav(!showNav)}/>
-            {/* <AddCircleOutlinedIcon className='hide__lg'/> */}
-            {/* <ArrowCircleRightIcon /> */}
-            <NotificationsNoneOutlinedIcon />
-            <SettingsOutlinedIcon />
-            
-        </div>
+      <TodoForm showNav={showNav} setShowNav={setShowNav} />
+      <div className='header__home'>
+        <MenuOutlinedIcon className='hide__lg' />
+        <Link to="/"><HomeOutlinedIcon /></Link>
+      </div>
+      <div className='header__notifications'>
+        <AddOutlinedIcon onClick={() => setShowNav(!showNav)} />
+        <NotificationsNoneOutlinedIcon className='opacityLow' />
+        <SettingsOutlinedIcon className='opacityLow' />
+      </div>
     </header>
   )
 }

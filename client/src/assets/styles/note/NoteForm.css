@@ -19,7 +19,7 @@
 .editor > div, .preview > div:first-of-type {
     padding : 15px 30px;
     background-color : black;
-    color : white;
+    color : var(--text);
 }
 
 .preview > div:nth-of-type(2) {
@@ -136,15 +136,19 @@
 @media screen and (max-width: 1024px) {
     .Editor__Preview {
         flex-direction: column;
+        border : none;
     }
 
     .editor {
         border-bottom : 2px solid black;
         border-right : none;
         width : 100%;
+        border : 1px solid black;
     }
-
+    
     .preview {
         width : 100%;
+        margin-top : 20px;
+        border : 1px solid black;
     }
 }

@@ -71,12 +71,33 @@ nav .nav__wrapper ul a {
     display : flex;
     margin : 10px 0;
     text-decoration: none;
-    color : white;
+    color : var(--text);
 }
 
 nav .nav__wrapper ul li {
     display : flex;
     align-items: center;
+}
+
+
+nav .nav__wrapper .today svg {
+    color : #7DD181;
+}
+
+nav .nav__wrapper .allTasks svg {
+    color : #BDADEA
+}
+
+nav .nav__wrapper .createNote svg {
+    color : #7F7B82
+}
+
+nav .nav__wrapper .allNotes svg {
+    color : #D6CA98
+}
+
+nav .nav__wrapper .meteo svg {
+    color : #4381C1;
 }
 
 nav .nav__wrapper ul a:nth-of-type(2), nav .nav__wrapper ul a:nth-of-type(4){
@@ -85,6 +106,7 @@ nav .nav__wrapper ul a:nth-of-type(2), nav .nav__wrapper ul a:nth-of-type(4){
 
 nav .nav__wrapper ul li svg{
     margin-right : 10px;
+    font-size: var(--fs-base);
 }
 
 @media screen and (max-width: 1024px) {

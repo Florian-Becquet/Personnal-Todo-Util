@@ -82,13 +82,6 @@ function CreateNoteForm() {
           setCategory('');
         }}
       >
-        {/* <label htmlFor="title">Titre</label> */}
-        {/* <input id="title" type="text" onChange={(e) => setTitle(e.target.value)} placeholder='Saisir un titre' />
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
-          <option value="courses">Courses</option>
-          <option value="personnel">Personnel</option>
-          <option value="autre">Autre</option>
-        </select> */}
 
         <TextField label="Titre" variant="outlined" value={title} onChange={(e) => setTitle(e.target.value)} required sx={{ mb: 3 }} /> 
          <FormControl fullWidth sx={{ mt: 3 }} className='select__note'>
@@ -99,6 +92,7 @@ function CreateNoteForm() {
             value={category}
             label="Catégorie *"
             onChange={(e) => setCategory(e.target.value)}
+            required
           >
             <MenuItem value="courses">Courses</MenuItem>
             <MenuItem value="personnel">Personnel</MenuItem>

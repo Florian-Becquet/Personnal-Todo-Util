@@ -67,6 +67,11 @@ function TodoForm({ showNav, setShowNav }) {
               ampm={false}
               defaultValue={today}
               disablePast
+              slotProps={{
+                textField: {
+                  error: false,
+                },
+              }}
             />
           </LocalizationProvider>
           <FormControl fullWidth sx={{ mt: 3, zIndex: 11000 }}>
@@ -78,7 +83,7 @@ function TodoForm({ showNav, setShowNav }) {
               value={category}
               label="Catégorie *"
               onChange={(e) => setCategory(e.target.value)}
-
+              required
             >
               <MenuItem value="personnel">Personnel</MenuItem>
               <MenuItem value="travail">Travail</MenuItem>

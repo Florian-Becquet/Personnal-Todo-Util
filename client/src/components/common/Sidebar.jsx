@@ -12,20 +12,9 @@ const Sidebar = () => {
         <nav>
             <div className='nav__wrapper'>
                 <ul>
-                    {/* {appRoutes && appRoutes.map((link, index) => (
-                        <li key={index}>
-                            {link.icon}
-                            {link.title}
-                            <ul>
-                                {link.child.map((item, index) => (
-                                    <Link key={index} to={item.path}><li>{item.name}</li></Link>
-                                ))}
-                            </ul>
-                        </li>
-                    ))} */}
                     {appRoutes && appRoutes.map((link, index) => (
                         <Link key={index} to={link.path}>
-                            <li>
+                            <li className={link.className}>
                                 {link.icon}
                                 {link.title}
                             </li>

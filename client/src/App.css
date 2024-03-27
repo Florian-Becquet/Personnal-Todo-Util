@@ -68,9 +68,12 @@
   box-sizing: border-box;
 }
 
+
 body {
-  overflow-x: hidden;
-  color : var(--text)
+  overflow: auto!important;
+  overflow-x: hidden!important;
+  color : var(--text);
+  padding-right: 0px!important;
 }
 
 main, .main {
@@ -91,7 +94,17 @@ main, .main {
 }
 
 
+@media screen and (min-width: 1024px) {
+  .hide__lg {
+    display : none;
+  }
+}
+
 @media screen and (max-width: 1024px) {
+  body {
+    overflow-x: initial;
+  }
+
   main, .main {
     padding-left : 0;
   }

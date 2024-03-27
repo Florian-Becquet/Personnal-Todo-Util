@@ -22,15 +22,17 @@
 }
 
 .main__weather img {
-    width : 75px;
+    width : var(--fs-xxxl);
+    height : var(--fs-xxxl)
 }
 
 .main__weather div {
     display : flex;
+    align-items: center;
 }
 
 .main__weather .main__temp{
-    font-size : 60px
+    font-size : var(--fs-xxxl)
 }
 
 .weather__sun {
@@ -65,8 +67,8 @@
 }
 
 .weather__hour img {
-    width : 40px;
-    height : 40px;
+    width : var(--fs-xl);
+    height : var(--fs-xl);
 }
 
 .weather__otherDays {
@@ -74,11 +76,12 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-top : var(--fs-xxxl)
+    margin-top : var(--fs-xxl)
 }
+  
 
 .weather__otherDays > div {
-    width : 40%;
+    width : 45%;
     box-shadow:  0 0 2px black;
     margin : 0 10px;
 }
@@ -88,6 +91,8 @@
     align-items: center;
     justify-content: center;
     gap : 0.5em;
+    font-size: var(--fs-lg);
+    padding : var(--fs-sm)
 }
 
 .weather__otherDays div div{
@@ -95,7 +100,7 @@
     align-items: center;
     justify-content: center;
     gap : 0.5em;
-    margin : 10px auto;
+    padding : var(--fs-sm)
 }
 
 .weather__otherDays div div p{
@@ -107,4 +112,10 @@
 
 .weather__otherDays img {
     margin-left : 10px;
+}
+
+@media screen and (max-width: 1024px) {
+    .container > .weather {
+        width : 100%;
+    }
 }

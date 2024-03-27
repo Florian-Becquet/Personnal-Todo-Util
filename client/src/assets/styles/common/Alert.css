@@ -3,5 +3,16 @@
     top : 65px;
     left : 50%;
     transform: translateY(-50%);
-    z-index: 1001;
+    z-index: 11000!important;
+}
+
+@media screen and (max-width: 1024px) {
+    .alert {
+        position : fixed;
+        left : 50%;
+        transform: translate(-50%);
+        top : 40px;
+        z-index: 1001;
+        width : 90%;
+    }
 }

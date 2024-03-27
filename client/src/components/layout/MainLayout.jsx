@@ -17,15 +17,15 @@ const MainLayout = () => {
             <Header />
             <Sidebar />
             {pathname === '/' ?
-                <div className='main'>
+                <main>
                     <TodayTodos />
-                </div>
+                </main>
                 :
-                ''
+                <main>
+                    <Outlet />
+                </main>
             }
-            <main>
-                <Outlet />
-            </main>
+
         </>
     )
 }

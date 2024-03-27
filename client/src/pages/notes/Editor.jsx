@@ -6,7 +6,7 @@ export const Editor = ({ text, setText }) => {
     return (
         <div className='editor'>
             <div>Markdown</div>
-            <textarea autoFocus value={text} onChange={(e) => {setText(e.target.value)}}>{text}</textarea>
+            <textarea required autoFocus value={text} onChange={(e) => {setText(e.target.value)}}>{text}</textarea>
         </div>
     )
 }
