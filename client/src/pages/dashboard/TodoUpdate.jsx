@@ -13,7 +13,6 @@ import SendIcon from '@mui/icons-material/Send';
 const TodoUpdate = () => {
     const location = useLocation();
     const todo = location.state.todo
-    const message = location.state.messageUpdate
 
     const [values, setValues] = useState({
         id: todo._id,
@@ -23,19 +22,7 @@ const TodoUpdate = () => {
         currentDate: todo.currentDate
     })
 
-    // const { mutate: updateTodo } = useMutation(
-    //     // (updatedTodo) => updateTodoRequest(updatedTodo, token),
-    //     (updatedTodo) => updateTodoRequest(updatedTodo),
-    //     {
-    //         onSettled: () => {
-    //             QueryClient.invalidateQueries('todos');
-    //         },
-    //     }
-    // );
-
     const today = dayjs();
-    let expiryDate2 = new Date(Date.now() + 2 * (60 * 60 * 1000));
-    console.log(expiryDate2);
 
     const navigate = useNavigate();
     const handleSubmit = (e) => {

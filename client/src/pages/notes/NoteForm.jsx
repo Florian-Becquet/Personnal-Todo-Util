@@ -1,17 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import createNoteRequest from '../../api/notes/createNoteRequest';
-// import { TokenContext } from '../../App';
-// import DatePicker from "react-datepicker";
-// import 'react-datepicker/dist/react-datepicker.css'
 import { Editor } from './Editor'
 import { Preview } from './Preview'
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import '../../assets/styles/note/NoteForm.css'
 import AlertMessage from '../../components/common/AlertMessage';
-import NotePage from './NotePage';
-import hljs from 'highlight.js';
+
 
 
 
@@ -22,16 +18,35 @@ function CreateNoteForm() {
 
 
 
+
   const [text, setText] = useState(`
-  # H1
-  ## H2
+  # Header 1
+  
+  Voici un exemple de document Mardown. Markdown permet un formatage
+  syntaxique simple.
+  
+  Utilisez un astérisque pour agir sur votre texte, tel que :
+  *italique* ou **gras**
+
+  Créez une liste avec un tiret
+
   - Item 1
   - Item 2
+  - Item 3
+
+  Utilisez les back ticks pour créer un bloc de code
+
+  \`npm install create-react-app -g\`
   \`\`\`
-  Code
+  function addTwoNumbers(a, b) {
+    return a + b
+  }
+  const name = 'Benjamin'
+  const age = 37
+  const number = Math.random() * 10
   \`\`\`
-  **Bold** - *Italic*
-  > Quote
+  
+  > To be, or not to be. That is a stupid question.
   ~~barré~~
 
   1. First item
@@ -83,8 +98,8 @@ function CreateNoteForm() {
         }}
       >
 
-        <TextField label="Titre" variant="outlined" value={title} onChange={(e) => setTitle(e.target.value)} required sx={{ mb: 3 }} /> 
-         <FormControl fullWidth sx={{ mt: 3 }} className='select__note'>
+        <TextField label="Titre" variant="outlined" value={title} onChange={(e) => setTitle(e.target.value)} required sx={{ mb: 3 }} />
+        <FormControl fullWidth sx={{ mt: 3 }} className='select__note'>
           <InputLabel required id="demo-simple-select-label">Catégorie</InputLabel>
           <Select
             labelId="demo-simple-select-label"
@@ -96,9 +111,10 @@ function CreateNoteForm() {
           >
             <MenuItem value="courses">Courses</MenuItem>
             <MenuItem value="personnel">Personnel</MenuItem>
+            <MenuItem value="cuisine">Cuisine</MenuItem>
             <MenuItem value="autre">Autre</MenuItem>
           </Select>
-        </FormControl> 
+        </FormControl>
         <div className='Editor__Preview'>
           <Editor text={text} setText={setText} />
           <Preview text={text} />
@@ -108,7 +124,7 @@ function CreateNoteForm() {
           Créer
         </Button>
         {isSuccess &&
-          <AlertMessage severity="success" children="Tâche correctement ajoutée" />
+          <AlertMessage severity="success" children="Note correctement ajoutée" />
         }
 
         {isError &&

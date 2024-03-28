@@ -104,7 +104,7 @@ const AllTodos = () => {
         <>
             {isLoading
                 ?
-                <Loader />
+                <Loader message="Un peu de patience s'il vous plaît"/>
                 :
                 <div className='container'>
                     <div className='component__title'>

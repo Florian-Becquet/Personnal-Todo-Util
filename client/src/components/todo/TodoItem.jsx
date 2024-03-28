@@ -105,6 +105,7 @@ function TodoItem({ todo, setMessage }) {
                 <div className='todo__main'>
                     <input type="checkbox" checked={todo.completed} onChange={() => updateTodo({ ...todo, completed: !todo.completed })} />
                     <p>{todo.text}</p>
+                    <p className='hiddenText'> {todo.text} </p>
                 </div>
                 <div className='todo__options'>
                     <Link to={`/todos/update/${todo._id}`} state={{ todo: todo }}>
@@ -126,10 +127,10 @@ function TodoItem({ todo, setMessage }) {
 
             </div>
             {updateIsLoading &&
-                <Loader />
+                <Loader message=""/>
             }
             {deleteIsLoading && 
-                <Loader />
+                <Loader message=""/>
             }
         </div>
 

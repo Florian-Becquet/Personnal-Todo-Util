@@ -6,7 +6,7 @@
     display : flex;
     /* align-items: center; */
     width : 100%;
-    border : 1px solid black;
+    /* border : 1px solid black; */
     /* border-radius: 5px; */
 }
 
@@ -60,77 +60,12 @@
     margin-bottom : 20px!important;
 }
 
-/* #addNote input{
-    border : none;
-    outline : none;
-    background-color : transparent;
-    border-bottom : 1px solid black;
-    padding : 10px 0;
-    color : white;
-    margin-bottom : var(--fs-lg);
-    margin-right : var(--fs-xxl);
-} */
-
-/* #addNote select{
-    border : none;
-    outline : none;
-    background-color : transparent;
-    border-bottom : 1px solid black;
-    padding : 10px 0;
-    margin-bottom : var(--fs-lg);
-    margin-right : var(--fs-xxl);
-} */
-
 #addNote option{
     padding : 20px;
 }
 
 
-/* select {
 
-    appearance: none;
-    border: 0;
-    outline: 0;
-    font: inherit;
-
-    width: 20rem;
-    padding: 1rem 4rem 1rem 1rem;
-    background: var(--arrow-icon) no-repeat right 1.8em center/1.4em;
-    color: white;
-    border-radius: 0.25em;
-    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-  }
-  select::-ms-expand {
-    display: none;
-  }
-  select:focus {
-    outline: none;
-  }
-  select option {
-    color: inherit;
-    background-color: black;
-    border : none;
-  } */
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 
 
 @media screen and (max-width: 1024px) {

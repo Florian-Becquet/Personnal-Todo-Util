@@ -42,6 +42,7 @@ const NoteItem = ({ note, setMessage }) => {
 
     <div className={`note__item ${deleting}`}>
       <h5> {note.title} </h5>
+      <h5 className='hiddenText'> {note.title} </h5>
       <div className='note__option'>
         <Link to={`/notes/${note._id}`} state={{ note: note }}>
           <Button variant="outlined" color="primary" startIcon={<VisibilityIcon />} />

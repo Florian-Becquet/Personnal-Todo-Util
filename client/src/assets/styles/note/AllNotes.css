@@ -33,7 +33,7 @@
 }
 
 .note__item {
-    width : calc(100% / 2 - 2em);
+    width : calc(100% / 3 - 2em);
     margin : 0.5em 1em;
 }
 
@@ -44,7 +44,7 @@
 
     .note__item {
         width : 100%;
-        margin : 0;
+        margin : 5px 0;
     }
     
 }

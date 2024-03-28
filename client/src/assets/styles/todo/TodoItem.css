@@ -63,9 +63,33 @@
     max-width: 80%;
 }
 
-.todo__item .todo__top .todo__main p {
+.todo__item .todo__top .todo__main p:first-of-type {
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.todo__item p:hover + .hiddenText {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.3s, opacity 0.3s;
+}
+
+.todo__item .hiddenText {
+    position : absolute;
+    top : 105%;
+    left : 0;
+    width : 100%;
+    background-color: var(--background);
+    border : 1px solid var(--main-background);
+    padding : 5px;
+    border-radius: 5px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s;
+    white-space: wrap;
+    z-index: 100;
 }
 
 
@@ -125,6 +149,10 @@
 
 .todo__item .todo__options button:first-of-type {
     margin-left: var(--fs-base);
+}
+
+.todo__item .todo__options > button svg:hover {
+    color : rgb(214, 55, 55)
 }
 
 .addTask {

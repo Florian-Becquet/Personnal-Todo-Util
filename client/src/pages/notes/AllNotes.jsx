@@ -33,6 +33,10 @@ export const buttons = [
     value: "personnel"
   },
   {
+    name: "Cuisine",
+    value: "cuisine"
+  },
+  {
     name: "Autre",
     value: "autre"
   }
@@ -51,7 +55,6 @@ const AllNotes = () => {
 
 
   const filterCategory = () => {
-    console.log(category);
     if (category === 'all') {
       return (notes.map(note => {
         return (
@@ -70,28 +73,35 @@ const AllNotes = () => {
 
 
   return (
-    <div className='container'>
-      <div className='btn__category'>
-        {buttons &&
-          buttons.map((type, index) => (
-            <Button key={index} value={type.value} onClick={(e) => setCategory(e.target.value)} variant="contained"> {type.name}</Button>
-          ))}
-      </div>
+    <>
+      {isLoading ?
+        <Loader message="Un peu de patience s'il vous plaît" />
+        :
+        <div className='container'>
+          <div className='btn__category'>
+            {buttons &&
+              buttons.map((type, index) => (
+                <Button key={index} value={type.value} onClick={(e) => setCategory(e.target.value)} variant="contained"> {type.name}</Button>
+              ))}
+          </div>
 
-      <div className='notes__list'>
-        {!isLoading ?
-          filterCategory().length === 0 ?
-            <p>Aucune note pour cette catégorie ! </p>
-            :
-            filterCategory()
-          :
-          <Loader />
-        }
-      </div>
-      {message &&
-        <AlertMessage severity="success" children={message} />
+          <div className='notes__list'>
+            {!isLoading ?
+              filterCategory().length === 0 ?
+                <p>Aucune note pour cette catégorie ! </p>
+                :
+                filterCategory()
+              :
+              <Loader />
+            }
+          </div>
+          {message &&
+            <AlertMessage severity="success" children={message} />
+          }
+        </div>
       }
-    </div>
+    </>
+
   )
 }
 

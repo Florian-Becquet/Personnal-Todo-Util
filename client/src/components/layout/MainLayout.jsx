@@ -15,7 +15,7 @@ const MainLayout = () => {
     return (
         <>
             <Header />
-            <Sidebar />
+            {/* <Sidebar /> */}
             {pathname === '/' ?
                 <main>
                     <TodayTodos />

@@ -95,9 +95,14 @@ main, .main {
 
 
 @media screen and (min-width: 1024px) {
-  .hide__lg {
-    display : none;
+  .hide__mobile {
+    display : block!important;
   }
+
+  .hide__lg {
+    display : none!important;
+  }
+
 }
 
 @media screen and (max-width: 1024px) {
@@ -114,6 +119,10 @@ main, .main {
   }
 
   .hide__lg {
-    display : none;
+    display : block!important;
+  }
+
+  .hide__mobile {
+    display : none!important;
   }
 }

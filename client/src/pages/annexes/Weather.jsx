@@ -15,10 +15,11 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { Box, Paper } from "@mui/material";
 import Loader from "../../components/common/Loader";
+import 'dayjs/locale/fr'
 const Weather = () => {
     const [weatherData, setWeatherData] = useState('');
 
-
+    dayjs.locale('fr')
 
     // const fetchWeatherData = () => {
     //     axios.get(
@@ -37,7 +38,7 @@ const Weather = () => {
             .then(res => setWeatherData(res.data))
             .catch(err => console.log(err))
     }
-    
+
 
 
 
@@ -46,17 +47,73 @@ const Weather = () => {
     }, [])
 
     const dateDay = dayjs(new Date()).format("YYYY-MM-DD");
-
+    console.log(weatherData);
     return (
         <>
             {!weatherData ?
-                <Loader />
+                <Loader message=''/>
                 :
                 <div className="container">
                     <div className="weather">
-                        <header>
+                        <div className="main__day">
+                            <div>
+                                <h1><LocationOnIcon />{weatherData.location.name}</h1>
+                                <p>Aujourd'hui, {dayjs(new Date()).format("DD MMMM YYYY")}</p>
+                            </div>
+                            <div className="main__weather">
+                                <div>
+                                    <img src={weatherData.current.condition.icon} />
+                                    <p className="main__temp">{weatherData.current.temp_c}°C</p>
+                                </div>
+                                <p></p>
+                            </div>
+                            <hr />
+                            <div className="weather__options">
+                                <p>Ressenti : <span>{weatherData.current.feelslike_c}°C </span></p>
+                                <p>Humidité : <span>{weatherData.current.humidity}%</span></p>
+                                <p>Vent : <span>{weatherData.current.wind_kph} km/h</span></p>
+                            </div>
+                            <hr />
+                            {weatherData.forecast.forecastday
+                                .filter((cast) => dayjs(cast.date).format("YYYY-MM-DD") === dayjs(new Date()).format("YYYY-MM-DD"))
+                                .map((cast, index) =>
+                                    <div key={index}>
+                                        <div className="weather__sun">
+                                            <p><LightModeIcon />{cast.astro.sunrise}</p>
+                                            <p><WbTwilightIcon />{cast.astro.sunset}</p>
+                                        </div>
+                                        <hr />
+                                        <div className="weather__hour">
+                                            {cast.hour
+                                                .filter((heure) => heure.time === dateDay + " 07:00" || heure.time === dateDay + " 08:00" || heure.time === dateDay + " 09:00" || heure.time === dateDay + " 12:00" || heure.time === dateDay + " 15:00" || heure.time === dateDay + " 17:00")
+                                                .map((heure, index) => (
+                                                    <div key={index}>
+                                                        <p><AccessTimeIcon />{heure.time.substr(10)}</p>
+                                                        <img src={heure.condition.icon} />
+                                                    </div>
+                                                ))}
+                                        </div>
+
+                                    </div>
+                                )}
+                        </div>
+                        <div className="weather__otherDays">
+                            {weatherData.forecast.forecastday
+                                .filter((cast) => dayjs(cast.date).format("YYYY-MM-DD") !== dayjs(new Date()).format("YYYY-MM-DD"))
+                                .map((cast, index) =>
+                                    <div key={index}>
+                                        <h1><CalendarMonthIcon />{dayjs(cast.date).format("dddd DD")}</h1>
+                                        <div>
+                                            <img src={cast.day.condition.icon} />
+                                            <p><ThermostatIcon />{cast.day.avgtemp_c}°</p>
+                                        </div>
+                                    </div>
+                                )}
+                        </div>
+
+                        {/* <header>
                             <h1><CalendarMonthIcon />Maintenant</h1>
-                            {/* <h1><CalendarMonthIcon />Heure : {weatherData.location.localtime} / Aujourd'hui</h1> */}
+                        
                             <h1><LocationOnIcon />{weatherData.location.name}</h1>
                         </header>
                         <div className="main__weather">
@@ -74,7 +131,7 @@ const Weather = () => {
                                         <p><LightModeIcon />{cast.astro.sunrise}</p>
                                         <p><WbTwilightIcon />{cast.astro.sunset}</p>
                                     </div>
-                                    {/* <p><ThermostatIcon />max temp : {cast.day.maxtemp_c}°</p> */}
+                                   
                                     <div className="weather__hour">
                                         {cast.hour
                                             .filter((heure) => heure.time === dateDay + " 07:00" || heure.time === dateDay + " 08:00" || heure.time === dateDay + " 09:00" || heure.time === dateDay + " 12:00" || heure.time === dateDay + " 15:00" || heure.time === dateDay + " 17:00")
@@ -101,7 +158,7 @@ const Weather = () => {
                                         </div>
                                     </div>
                                 )}
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             }

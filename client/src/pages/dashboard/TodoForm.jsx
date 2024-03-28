@@ -40,7 +40,6 @@ function TodoForm({ showNav, setShowNav }) {
   return (
     <>
       <div className={showNav ? 'form__wrapper show' : 'form__wrapper'}>
-        {/* <button className='close__form' onClick={() => setShowNav(!showNav)}>X</button> */}
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -53,7 +52,6 @@ function TodoForm({ showNav, setShowNav }) {
             });
             setText('')
             setCategory('');
-            // setShowNav(!showNav)
           }}
         >
           <div className='close__form' onClick={() => setShowNav(!showNav)}><CloseOutlinedIcon /> </div>
@@ -99,7 +97,7 @@ function TodoForm({ showNav, setShowNav }) {
             <AlertMessage severity="success" children="Tâche correctement ajoutée" />
           }
           {isLoading &&
-            <Loader/>
+            <Loader message=''/>
           }
           {isError &&
             <AlertMessage severity="error" children="Une erreur est survenue, veuillez réessayer !" />

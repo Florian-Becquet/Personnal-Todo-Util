@@ -7,22 +7,38 @@ import appRoutes from '../../routes/appRoutes'
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import { Link } from 'react-router-dom';
 
-const Sidebar = () => {
+const Sidebar = ({ showMobileMenu, setShowMobileMenu }) => {
     return (
-        <nav>
-            <div className='nav__wrapper'>
-                <ul>
-                    {appRoutes && appRoutes.map((link, index) => (
-                        <Link key={index} to={link.path}>
-                            <li className={link.className}>
-                                {link.icon}
-                                {link.title}
-                            </li>
-                        </Link>
-                    ))}
-                </ul>
-            </div>
-        </nav >
+        <>
+            <nav className={showMobileMenu ? 'hide__lg active' : ''}>
+                <div className='nav__wrapper'>
+                    <ul>
+                        {appRoutes && appRoutes.map((link, index) => (
+                            <Link key={index} to={link.path}>
+                                <li className={link.className} onClick={() => setShowMobileMenu(!showMobileMenu)}>
+                                    {link.icon}
+                                    {link.title}
+                                </li>
+                            </Link>
+                        ))}
+                    </ul>
+                </div>
+            </nav >
+            <nav className='hide__mobile'>
+                <div className='nav__wrapper'>
+                    <ul>
+                        {appRoutes && appRoutes.map((link, index) => (
+                            <Link key={index} to={link.path}>
+                                <li className={link.className} onClick={() => setShowMobileMenu(!showMobileMenu)}>
+                                    {link.icon}
+                                    {link.title}
+                                </li>
+                            </Link>
+                        ))}
+                    </ul>
+                </div>
+            </nav >
+        </>
     )
 }
 

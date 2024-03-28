@@ -12,14 +12,25 @@ import { Link } from 'react-router-dom';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import Sidebar from './Sidebar';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 const Header = () => {
   const [showNav, setShowNav] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+  const active = showMobileMenu ? 'active' : '';
   return (
     <header>
       <TodoForm showNav={showNav} setShowNav={setShowNav} />
+      <Sidebar showMobileMenu={showMobileMenu} setShowMobileMenu={setShowMobileMenu} />
       <div className='header__home'>
-        <MenuOutlinedIcon className='hide__lg' />
+        {showMobileMenu ?
+          <CloseOutlinedIcon className={`hide__lg ${active}`} onClick={() => setShowMobileMenu(!showMobileMenu)} />
+          :
+          <MenuOutlinedIcon className={`hide__lg ${active}`} onClick={() => setShowMobileMenu(!showMobileMenu)} />
+        }
+
         <Link to="/"><HomeOutlinedIcon /></Link>
       </div>
       <div className='header__notifications'>
