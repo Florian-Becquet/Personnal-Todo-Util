@@ -5,6 +5,7 @@
     align-items: center;
     padding : 10px;
     margin : 10px 0;
+    position: relative;
 }
 
 .note__item:hover {
@@ -20,6 +21,69 @@
     /* width : 50%; */
 }
 
+.note__item .note__option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.note__item .note__option button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* height: var(--fs-sm); */
+    width: var(--fs-sm);
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    color: var(--text);
+    cursor: pointer;
+}
+
+
+.note__item h5 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.note__item h5:hover + .hiddenText {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.3s, opacity 0.3s;
+}
+
+.note__item .hiddenText {
+    position : absolute;
+    top : 105%;
+    left : 0;
+    width : 100%;
+    background-color: var(--background);
+    border : 1px solid var(--main-background);
+    padding : 5px;
+    border-radius: 5px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s;
+    white-space: wrap;
+    z-index: 100;
+}
+
+.note__item .note__option button svg {
+    transition: color 0.3s;
+}
+
+.note__item .note__option button svg:hover {
+    color : white;
+    transition: color 0.3s;
+}
+
+.note__item .note__option > button svg:hover {
+    color : rgb(214, 55, 55)
+}
+
+
+
 
 
 textarea {
@@ -30,3 +94,129 @@ textarea {
 .singleNote .Editor__Preview .preview{
     width : 100%;
 } */
+
+
+/* @media screen and (max-width: 1024px) {
+    .note__item {
+        margin-top : 5px;
+    }
+
+} */
+
+
+code {
+    background-color: #ffe5e5;
+    color: #ff3232;
+    padding: .25vw .5vw;
+    border-radius: 2.5px;
+    width : 100%;
+    margin : 10px 0;
+  }
+  
+  pre code {
+    display: inline-block;
+    background-color: #3a3a3a;
+    color: white;
+    padding: .25vw .5vw;
+  }
+  
+  .hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    color: #abb2bf;
+    background: #282c34;
+  }
+  
+  .hljs-comment,
+  .hljs-quote {
+    color: #5c6370;
+    font-style: italic;
+  }
+  
+  .hljs-doctag,
+  .hljs-keyword,
+  .hljs-formula {
+    color: #c678dd;
+  }
+  
+  .hljs-section,
+  .hljs-name,
+  .hljs-selector-tag,
+  .hljs-deletion,
+  .hljs-subst {
+    color: #e06c75;
+  }
+  
+  .hljs-literal {
+    color: #56b6c2;
+  }
+  
+  .hljs-string,
+  .hljs-regexp,
+  .hljs-addition,
+  .hljs-attribute,
+  .hljs-meta-string {
+    color: #448711;
+  }
+  
+  .hljs-built_in,
+  .hljs-class .hljs-title {
+    color: #e6c07b;
+  }
+  
+  .hljs-attr,
+  .hljs-variable,
+  .hljs-template-variable,
+  .hljs-type,
+  .hljs-selector-class,
+  .hljs-selector-attr,
+  .hljs-selector-pseudo,
+  .hljs-number {
+    color: #d19a66;
+  }
+  
+  .hljs-symbol,
+  .hljs-bullet,
+  .hljs-link,
+  .hljs-meta,
+  .hljs-selector-id,
+  .hljs-title {
+    color: #61aeee;
+  }
+  
+  .hljs-emphasis {
+    font-style: italic;
+  }
+  
+  .hljs-strong {
+    font-weight: bold;
+  }
+  
+  .hljs-link {
+    text-decoration: underline;
+  }
+
+  blockquote {
+    padding : 10px;
+    border-left : 5px solid var(--background);
+    background-color : #3a3a3a;
+    margin: 5px 0;
+  }
+
+  .preview ul {
+    margin-left : 20px;
+  }
+
+  .preview p {
+    margin : 10px 0;
+  }
+
+  .preview, .editor {
+    font-family: monospace;
+    border : 1px solid black;
+  }
+
+  .preview strong {
+    font-size: 1.2em;
+  }
