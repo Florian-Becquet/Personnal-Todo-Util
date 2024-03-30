@@ -23,7 +23,7 @@ const AllTodos = () => {
 
     const { isLoading, data: todos } = useQuery('todos',
         () => readTodosRequest());
-    const [message, setMessage] = useState('')
+    const [message, setMessage] = useState(null)
     let arrayWithoutDuplon;
     let TaskToDo;
     let TaskCompleted;

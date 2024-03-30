@@ -214,7 +214,7 @@ code {
 
   .preview, .editor {
     font-family: monospace;
-    border : 1px solid black;
+    box-shadow: 0 0 2px black;
   }
 
   .preview strong {

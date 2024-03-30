@@ -27,7 +27,7 @@ const TodayTodos = () => {
     () => readTodosRequest());
   const [showNav, setShowNav] = useState(false);
   // const [isSuccess, setIsSuccess] = useState(false);
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState(null)
   let arrayWithoutDuplon;
   let lengthTodayNoComplete;
   let TaskToDo;

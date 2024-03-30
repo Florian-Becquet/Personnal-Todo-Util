@@ -2,7 +2,6 @@ import './App.css'
 import { Route, Routes } from 'react-router-dom'
 
 import MainLayout from './components/layout/MainLayout'
-
 import TodayTodos from './pages/dashboard/TodayTodos'
 import AllTodos from './pages/dashboard/AllTodos'
 import Weather from './pages/annexes/Weather'
@@ -10,7 +9,6 @@ import NoteForm from './pages/notes/NoteForm'
 import AllNotes  from './pages/notes/AllNotes'
 import NotePage from './pages/notes/NotePage';
 import TodoUpdate from './pages/dashboard/TodoUpdate'
-
 
 
 

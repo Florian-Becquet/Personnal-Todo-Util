@@ -24,6 +24,17 @@ function TodoItem({ todo, setMessage }) {
     // const [isEditing, setIsEditing] = useState(false);
     const [isDeleting, setIsDeleting] = useState('');
 
+    const [confirmDelete, setConfirmDelete] = useState(false);
+
+    const timeOut = () => {
+        const timeId = setTimeout(() => {
+            setMessage(null)
+        }, 3000)
+
+        return () => {
+            clearTimeout(timeId)
+        }
+    }
 
     const { isLoading: updateIsLoading, mutate: updateTodo } = useMutation(
         // (updatedTodo) => updateTodoRequest(updatedTodo, token),
@@ -34,14 +45,18 @@ function TodoItem({ todo, setMessage }) {
                 // setTimeout(() => {
                 //     setIsDeleting(false)
                 // }, 300)
+                // setMessage('');
                 queryClient.invalidateQueries('todos');
                 setMessage('Tâche modifiée')
-                setTimeout(() => {
-                    setMessage('')
-                }, 3001)
+                timeOut()
+                // setMessage('Tâche modifiée')
+                // setTimeout(() => {
+                //     setMessage('')
+                // }, 3001)
             },
         }
     );
+
 
     const { isLoading: deleteIsLoading, mutate: deleteTodo } = useMutation(
         (deletedTodo) => deleteTodoRequest(deletedTodo),
@@ -100,40 +115,58 @@ function TodoItem({ todo, setMessage }) {
 
     return (
 
-        <div className={`todo__item ${todo.category} ${completed} ${datePast}`}>
-            <div className='todo__top'>
-                <div className='todo__main'>
-                    <input type="checkbox" checked={todo.completed} onChange={() => updateTodo({ ...todo, completed: !todo.completed })} />
-                    <p>{todo.text}</p>
-                    <p className='hiddenText'> {todo.text} </p>
+        <>
+            {confirmDelete ?
+                <div className='deletePopup'>
+                    <div className='deleteModal'>
+                        <p>Supprimer {todo.text}</p>
+                        <p>Êtes-vous sûr de vouloir supprimer cette tâche ?</p>
+                        <div>
+                            <p onClick={() => setConfirmDelete(!confirmDelete)}> Non </p>
+                            <p onClick={() => deleteTodo(todo)}> Oui </p>
+                        </div>
+                    </div>
                 </div>
-                <div className='todo__options'>
-                    <Link to={`/todos/update/${todo._id}`} state={{ todo: todo }}>
-                        <button><ModeEditOutlineOutlinedIcon /></button>
-                    </Link>
-                    <button onClick={() => deleteTodo(todo)}><DeleteIcon /></button>
+                :
+                ''
+
+            }
+            <div className={`todo__item ${todo.category} ${completed} ${datePast}`}>
+                <div className='todo__top'>
+                    <div className='todo__main'>
+                        <input type="checkbox" checked={todo.completed} onChange={() => updateTodo({ ...todo, completed: !todo.completed })} />
+                        <p>{todo.text}</p>
+                        <p className='hiddenText'> {todo.text} </p>
+                    </div>
+                    <div className='todo__options'>
+                        <Link to={`/todos/update/${todo._id}`} state={{ todo: todo }}>
+                            <button><ModeEditOutlineOutlinedIcon /></button>
+                        </Link>
+                        <button onClick={() => setConfirmDelete(!confirmDelete)}><DeleteIcon /></button>
+                        {/* <button onClick={() => deleteTodo(todo)}><DeleteIcon /></button> */}
+                    </div>
                 </div>
-            </div>
-            <div className="todo__bottom">
-                {datePast ?
-                    <p> Date expirée </p>
-                    :
-                    <p>{dayjs(todo.date).format("HH:mm")}</p>
+
+                <div className="todo__bottom">
+                    {datePast ?
+                        <p> Date expirée </p>
+                        :
+                        <p>{dayjs(todo.date).format("HH:mm")}</p>
+                    }
+
+                    {readDate(todo.date)}
+
+                    <div className={`todo__category ${todo.category}`}>{todo.category}</div>
+
+                </div>
+                {updateIsLoading &&
+                    <Loader message="" />
                 }
-
-                {readDate(todo.date)}
-
-                <div className={`todo__category ${todo.category}`}>{todo.category}</div>
-
+                {deleteIsLoading &&
+                    <Loader message="" />
+                }
             </div>
-            {updateIsLoading &&
-                <Loader message=""/>
-            }
-            {deleteIsLoading && 
-                <Loader message=""/>
-            }
-        </div>
-
+        </>
     )
 }
 
