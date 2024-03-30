@@ -13,6 +13,13 @@ const deleteNoteRoute = require('./routes/notes/deleteNoteRoute');
 const updateNoteRoute = require('./routes/notes/updateNoteRoute');
 
 
+const updateRepasRoute = require('./routes/repas/updateRepasRoute');
+const createRepasRoute = require('./routes/repas/createRepasRoute');
+const readRepasRoute = require('./routes/repas/readRepasRoute');
+
+
+
+
 router.post('/todos', createTodoRoute);
 router.get('/todos', readTodosRoute);
 router.get('/todos/:date',  readDateTodosRoute);
@@ -23,6 +30,10 @@ router.get('/notes',  readNotesRoute);
 router.post('/notes', createNoteRoute);
 router.delete('/notes/:id', deleteNoteRoute);
 router.put('/notes/:id', updateNoteRoute)
+
+router.post('/annexes/repas', createRepasRoute);
+router.get('/annexes/repas', readRepasRoute);
+router.put('/annexes/repas/:id', updateRepasRoute);
 
 
 module.exports = router;
