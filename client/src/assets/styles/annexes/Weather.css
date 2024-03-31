@@ -124,6 +124,24 @@
     justify-content: center;
 }
 
+.weather form  {
+    display : flex;
+    align-items: center;
+    gap : 0.5em;
+    justify-content: center;
+    margin-bottom : 20px;
+}
+
+.weather form div {
+    margin-bottom : 0!important;
+    width : 100%;
+}
+
+.weather form button {
+    margin-top : 0;
+    height : 52px;
+    width : 15%!important
+}
 
 .main__day {
     width : 35%;
@@ -133,11 +151,19 @@
     font-size: var(--fs-sm);
 }
 
-.main__day > div h1 {
+.main__day > div:first-of-type div {
+    display : flex;
+    align-items: center;
+    gap : 2em;
+}
+
+.main__day > div div h1 {
     display: flex;
     align-items: center;
-    margin-bottom : 10px;
+    margin-bottom: 10px;
 }
+
+
 
 .main__day > div h1 svg{
     margin-right : 10px;
@@ -229,6 +255,7 @@
   .weather__otherDays {
     display: flex;
     padding : var(--fs-base);
+    width: 65%;
   }
 
   .weather__otherDays div {
@@ -239,6 +266,8 @@
     display: flex;
     align-items: center;
   }
+
+
 
   .weather__otherDays h1 svg{
     margin-right : 10px;

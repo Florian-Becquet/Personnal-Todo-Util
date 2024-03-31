@@ -13,11 +13,12 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import AirIcon from '@mui/icons-material/Air';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { Box, Paper } from "@mui/material";
+import { Box, Button, Paper, TextField } from "@mui/material";
 import Loader from "../../components/common/Loader";
 import 'dayjs/locale/fr'
 const Weather = () => {
     const [weatherData, setWeatherData] = useState('');
+    const [city, setCity] = useState('Seclin');
 
     dayjs.locale('fr')
 
@@ -34,30 +35,45 @@ const Weather = () => {
     // };
 
     const fetchWeatherData = async () => {
-        await axios.get('http://api.weatherapi.com/v1/forecast.json?key=bc7832f417be4d57b50133714242402&q=Seclin&days=3&aqi=no&alerts=no')
+        await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=bc7832f417be4d57b50133714242402&q=${city}=&days=3&aqi=no&alerts=no`)
             .then(res => setWeatherData(res.data))
             .catch(err => console.log(err))
     }
 
-
+    console.log(weatherData);
 
 
     useEffect(() => {
         fetchWeatherData();
-    }, [])
+    }, [city])
 
     const dateDay = dayjs(new Date()).format("YYYY-MM-DD");
-    console.log(weatherData);
     return (
         <>
             {!weatherData ?
-                <Loader message=''/>
+                <Loader message='' />
                 :
                 <div className="container">
                     <div className="weather">
+
                         <div className="main__day">
+                            <form
+                                onSubmit={(e) => {
+                                    e.preventDefault();
+                                    setCity(e.target.value)
+                                }}
+                            >
+                                <TextField label="Ville" variant="outlined" onChange={(e) => setCity(e.target.value)} required sx={{ mb: 3 }} />
+                                {/* <Button variant="contained" type='submit' sx={{ mt: 3, width: "50%", mx: 'auto' }}>
+                                    Ok
+                                </Button> */}
+                            </form>
                             <div>
-                                <h1><LocationOnIcon />{weatherData.location.name}</h1>
+                                <div>
+                                    <h1><LocationOnIcon />{weatherData.location.name}</h1>
+                                    <span>{weatherData.location.country}</span>
+                                </div>
+
                                 <p>Aujourd'hui, {dayjs(new Date()).format("DD MMMM YYYY")}</p>
                             </div>
                             <div className="main__weather">
