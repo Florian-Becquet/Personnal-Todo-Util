@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../assets/styles/common/Header.css'
 
 // Icons
@@ -14,12 +14,41 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import Sidebar from './Sidebar';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import { useGlobalState } from '../../redux/store';
+import dayjs from 'dayjs';
 
 const Header = () => {
   const [showNav, setShowNav] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
+
+  const todos = useGlobalState('todos');
+  const loading = useGlobalState('loading')
+
+  // const hoursLeft = () => {
+  //   let hours = [];
+  //   todos.map((todo) => {
+  //       {
+  //         todo.map((td) => {
+  //           console.log(td);
+  //         })
+  //         const hour =  Math.round(((dayjs(todo.date) - dayjs(new Date())) / 3_600_000) * 60);
+  //         if(hour > 0 && hour < 60) {
+  //           hours.push(todo)
+
+  //         }
+  //       }
+
+  //     })
+  //   return hours
+  // }
+  // const hh = hoursLeft();
+  // console.log(hh);
+
+  
   const active = showMobileMenu ? 'active' : '';
+  const disable = loading[0] || active ? 'disable' : '';
+
   return (
     <header>
       <TodoForm showNav={showNav} setShowNav={setShowNav} />
@@ -34,7 +63,7 @@ const Header = () => {
         <Link to="/"><HomeOutlinedIcon /></Link>
       </div>
       <div className='header__notifications'>
-        <AddOutlinedIcon onClick={() => setShowNav(!showNav)} />
+        <button disabled={loading[0] || active ? true : false} onClick={() => setShowNav(!showNav)}><AddOutlinedIcon className={disable}  /></button>
         <NotificationsNoneOutlinedIcon className='opacityLow' />
         <SettingsOutlinedIcon className='opacityLow' />
       </div>
