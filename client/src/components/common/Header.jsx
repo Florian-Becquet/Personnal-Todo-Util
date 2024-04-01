@@ -25,29 +25,10 @@ const Header = () => {
   const todos = useGlobalState('todos');
   const loading = useGlobalState('loading')
 
-  // const hoursLeft = () => {
-  //   let hours = [];
-  //   todos.map((todo) => {
-  //       {
-  //         todo.map((td) => {
-  //           console.log(td);
-  //         })
-  //         const hour =  Math.round(((dayjs(todo.date) - dayjs(new Date())) / 3_600_000) * 60);
-  //         if(hour > 0 && hour < 60) {
-  //           hours.push(todo)
 
-  //         }
-  //       }
-
-  //     })
-  //   return hours
-  // }
-  // const hh = hoursLeft();
-  // console.log(hh);
-
-  
   const active = showMobileMenu ? 'active' : '';
   const disable = loading[0] || active ? 'disable' : '';
+
 
   return (
     <header>
@@ -59,11 +40,14 @@ const Header = () => {
           :
           <MenuOutlinedIcon className={`hide__lg ${active}`} onClick={() => setShowMobileMenu(!showMobileMenu)} />
         }
-
-        <Link to="/"><HomeOutlinedIcon /></Link>
+        {active ?
+          <Link className={disable}><HomeOutlinedIcon /></Link>
+          :
+          <Link className={disable} to="/"><HomeOutlinedIcon  /></Link>
+        }
       </div>
       <div className='header__notifications'>
-        <button disabled={loading[0] || active ? true : false} onClick={() => setShowNav(!showNav)}><AddOutlinedIcon className={disable}  /></button>
+        <button disabled={loading[0] || active ? true : false} onClick={() => setShowNav(!showNav)}><AddOutlinedIcon className={disable}/></button>
         <NotificationsNoneOutlinedIcon className='opacityLow' />
         <SettingsOutlinedIcon className='opacityLow' />
       </div>

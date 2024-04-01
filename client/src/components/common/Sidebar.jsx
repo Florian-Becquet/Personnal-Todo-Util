@@ -28,7 +28,7 @@ const Sidebar = ({ showMobileMenu, setShowMobileMenu }) => {
                 <div className='nav__wrapper'>
                     <ul>
                         {appRoutes && appRoutes.map((link, index) => (
-                            <Link key={index} to={link.path} onClick={() => setShowMobileMenu(!showMobileMenu)}>
+                            <Link key={index} to={link.path}>
                                 <li className={link.className}>
                                     {link.icon}
                                     {link.title}

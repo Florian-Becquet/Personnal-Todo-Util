@@ -12,6 +12,10 @@
     color : var(--text)
 }
 
+.btn__category button:hover {
+    background-color: var(--main-background);
+}
+
 .note__option button {
     min-width : 35px!important;
     width : 55px;

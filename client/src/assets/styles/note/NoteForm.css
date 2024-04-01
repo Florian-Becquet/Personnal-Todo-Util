@@ -73,6 +73,24 @@
     padding : 20px;
 }
 
+.css-1ds5juw-MuiButtonBase-root-MuiButton-root {
+    background-color: var(--background)!important;
+    float : right!important;
+    /* margin-bottom : 25px!important; */
+}
+
+.css-v4u0l7-MuiFormControl-root-MuiTextField-root {
+    margin-bottom : 12px!important;
+}
+
+#addNote {
+    display : flex;
+    flex-direction: column;
+}
+
+#addNote .css-1wo9mtq-MuiFormControl-root, #addNote .css-v4u0l7-MuiFormControl-root-MuiTextField-root { 
+    width : 50%!important;
+}
 
 
 
@@ -94,5 +112,13 @@
         width : 100%;
         margin-top : 20px;
         box-shadow: 0 0 2px black;
+    }
+
+    .css-1ds5juw-MuiButtonBase-root-MuiButton-root {
+        width : 100%!important;
+    }
+
+    #addNote .css-1wo9mtq-MuiFormControl-root, #addNote .css-v4u0l7-MuiFormControl-root-MuiTextField-root { 
+        width : 100%!important;
     }
 }

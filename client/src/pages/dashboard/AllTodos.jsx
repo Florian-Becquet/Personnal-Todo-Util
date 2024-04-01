@@ -15,6 +15,8 @@ import 'dayjs/locale/fr'
 import Loader from '../../components/common/Loader';
 import AlertMessage from '../../components/common/AlertMessage';
 
+import InfoIcon from '@mui/icons-material/Info';
+
 // import "../../components/styles/TodoPage.css"
 // import Weather from '../component/annexes/Weather';
 // import Food from '../component/annexes/Food';
@@ -23,7 +25,7 @@ const AllTodos = () => {
 
     const { isLoading, data: todos } = useQuery('todos',
         () => readTodosRequest());
-    const [message, setMessage] = useState(null)
+    const [message, setMessage] = useState('')
     let arrayWithoutDuplon;
     let TaskToDo;
     let TaskCompleted;
@@ -84,7 +86,7 @@ const AllTodos = () => {
 
     const TasksCompleted = () => {
         let TasksCompletedToday = [];
-        todos.filter((todo) => dayjs(todo.date).format("dddd DD/MM") && todo.completed === true)
+        todos.filter((todo) => dayjs(todo.date).format("dddd DD/MM") && todo.completed === true && Math.round(((dayjs(todo.date) - dayjs(new Date())) / 3_600_000) * 60) > 0)
             .map((todo) => {
                 {
                     TasksCompletedToday.push(todo)
@@ -108,6 +110,7 @@ const AllTodos = () => {
                 :
                 <div className='container'>
                     <div className='component__title'>
+                        <div className='infoCompleted'><InfoIcon /><p>Les tâches complétées et expirées sont automatiquement supprimées. </p></div>
                         <h2>All Todos</h2>
                     </div>
                     {/* <div className='todo__subtitle'>
@@ -153,7 +156,7 @@ const AllTodos = () => {
                                 </div>
                                 <div className='todo__wrapper'>
                                     {todos
-                                        .filter((todo) => todo.completed === true)
+                                        .filter((todo) => todo.completed === true && Math.round(((dayjs(todo.date) - dayjs(new Date())) / 3_600_000) * 60) > 0)
                                         .map((todo) => {
                                             return (<TodoItem setMessage={setMessage} todo={todo} key={todo._id} />)
                                         })}

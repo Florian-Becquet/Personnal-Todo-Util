@@ -8,10 +8,11 @@
     transition : transform 0.5s ease-in-out;
     z-index: 1000;
     background-color: var(--background);
-    opacity : 0.98;
+    /* opacity : 0.98; */
     color : var(--text);
     height : 100%;
     width : 100vw;
+    overflow: hidden;
 }
 
 .form__wrapper.show {
@@ -85,6 +86,51 @@ form label, form input, form svg, #demo-simple-select  {
     width : 60%;
     margin: auto;
 }
+
+/* Date picker */
+.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+    background-color: var(--background)!important;
+    color : var(--text)!important;
+}
+
+.css-3dah0e-MuiModal-root-MuiDialog-root .MuiDialog-paper, .css-rhmlg1-MuiTypography-root-MuiDayCalendar-weekDayLabel, .css-1b9e08i-MuiTypography-root-MuiPickersToolbarText-root.Mui-selected, .css-13vtpvu-MuiTypography-root-MuiPickersToolbarText-root,
+.css-1hbyad5-MuiTypography-root, .css-mvmxd9-MuiTypography-root-MuiPickersToolbarText-root,.css-1e4tpwf-MuiTypography-root-MuiPickersToolbarText-root-MuiDateTimePickerToolbar-separator,
+.css-1tkx1wf-MuiSvgIcon-root-MuiPickersCalendarHeader-switchViewIcon, .css-1nkg345-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button, .css-kg9q0s-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button,
+.css-1b9e08i-MuiTypography-root-MuiPickersToolbarText-root, .css-1k4oq0i-MuiPaper-root-MuiPickersPopper-paper  {
+    background-color: var(--background)!important;
+    color : var(--text)!important;
+}
+
+.css-1u23akw-MuiButtonBase-root-MuiPickersDay-root, .css-53ccts-MuiClockNumber-root, .css-zddqwy-MuiClockNumber-root, .css-jgls56-MuiButtonBase-root-MuiPickersDay-root,  .css-i4bv87-MuiSvgIcon-root {
+    color : var(--text)!important;
+}
+
+.css-iax6tr-MuiMultiSectionDigitalClock-root .MuiMultiSectionDigitalClockSection-root::-webkit-scrollbar, .css-iax6tr-MuiMultiSectionDigitalClock-root::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--background);
+  }
+
+.css-kg9q0s-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button.Mui-disabled, .css-1u23akw-MuiButtonBase-root-MuiPickersDay-root.Mui-disabled:not(.Mui-selected),
+.css-zddqwy-MuiClockNumber-root.Mui-disabled {
+    background-color: var(--background)!important;
+    color : var(--text)!important;
+    opacity : 0.2!important ;
+}
+
+.css-jgls56-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected) {
+    border : 1px solid var(--text)!important;
+}
+
+.css-z3c6am-MuiFormControl-root-MuiTextField-root, .css-1o9hacb-MuiFormControl-root {
+    margin-top : 10px!important;
+}
+
+
+
 
 @media screen and (max-width: 1024px) {
     .form__wrapper {

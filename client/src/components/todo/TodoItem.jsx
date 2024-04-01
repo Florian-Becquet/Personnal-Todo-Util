@@ -6,6 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 // import { TokenContext } from '../../App';
 import dayjs from "dayjs";
+import 'dayjs/locale/fr'
 import { Button, Checkbox, Chip, Grid, Paper } from '@mui/material';
 import '../../assets/styles/todo/TodoItem.css'
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
@@ -18,44 +19,39 @@ import axios from 'axios';
 import EventAvailableOutlinedIcon from '@mui/icons-material/EventAvailableOutlined';
 import EventBusyOutlinedIcon from '@mui/icons-material/EventBusyOutlined';
 import Loader from '../common/Loader';
+import { setGlobalState } from '../../redux/store';
+import { pink } from '@mui/material/colors';
 function TodoItem({ todo, setMessage }) {
     // const [token] = useContext(TokenContext)
     const queryClient = useQueryClient();
     // const [isEditing, setIsEditing] = useState(false);
-    const [isDeleting, setIsDeleting] = useState('');
+
+    // const [showMsg, setShowMsg] = useState(false);
 
     const [confirmDelete, setConfirmDelete] = useState(false);
 
-    const timeOut = () => {
-        const timeId = setTimeout(() => {
-            setMessage(null)
-        }, 3000)
-
-        return () => {
-            clearTimeout(timeId)
-        }
-    }
 
     const { isLoading: updateIsLoading, mutate: updateTodo } = useMutation(
         // (updatedTodo) => updateTodoRequest(updatedTodo, token),
         (updatedTodo) => updateTodoRequest(updatedTodo),
         {
             onSettled: () => {
-                // setIsDeleting(true);
-                // setTimeout(() => {
-                //     setIsDeleting(false)
-                // }, 300)
-                // setMessage('');
+
+
                 queryClient.invalidateQueries('todos');
-                setMessage('Tâche modifiée')
-                timeOut()
                 // setMessage('Tâche modifiée')
                 // setTimeout(() => {
-                //     setMessage('')
-                // }, 3001)
+                //     setShowMsg(false);
+                // }, 3000)
+                setMessage('Tâche modifiée')
+                setTimeout(() => {
+                    setMessage('')
+                }, 3000)
             },
         }
     );
+
+    dayjs.locale('fr')
 
 
     const { isLoading: deleteIsLoading, mutate: deleteTodo } = useMutation(
@@ -74,19 +70,46 @@ function TodoItem({ todo, setMessage }) {
             },
         }
     );
+    const hours = Math.round(((dayjs(todo.date) - dayjs(new Date())) / 3_600_000) * 60);
 
+    setGlobalState('hours', hours)
 
     const completed = todo.completed ? 'done' : '';
-    const datePast = dayjs(todo.date).format("YYYY-MM-DD") < dayjs(new Date()).format("YYYY-MM-DD") ? 'past' : '';
+    // const datePast = dayjs(todo.date).format("YYYY-MM-DD") < dayjs(new Date()).format("YYYY-MM-DD") ? 'past' : '';
+    const datePast = hours < 0 ? 'past' : '';
+    const isUpdating = updateIsLoading ? 'updating'  : ''
+    const isDeleting = deleteIsLoading ? 'deleting'  : ''
     // const deleting = isDeleting ? 'deleting' : '';
+
 
     const daysLeft = (date) => {
         const date1 = dayjs(date);
         const date2 = dayjs(new Date()).format("YYYY-MM-DD");
         let days = Math.floor(date1.diff(date2, 'day', true));
         // const days = Math.floor(hours / 24);
+
+
+
         return days
     }
+
+
+
+
+    // const hoursLeft = () => {
+    //     let arrayHours = [];
+    //     if(hours > 0 && hours < 60) {
+    //         arrayHours.push(hours);
+    //     }
+    //     return arrayHours
+    //   }
+    //   const ldld = hoursLeft();
+    //   console.log(ldld);
+
+
+
+    // console.log(hours);
+    // setGlobalState("hours", hours);
 
     const readDate = (date) => {
         if (daysLeft(date) === 1) {
@@ -101,15 +124,6 @@ function TodoItem({ todo, setMessage }) {
         }
     }
 
-    const alertMessage = () => {
-        if (updateSuccess) {
-            return <AlertMessage severity="success" children="Tâche correctement modifiée" />
-        }
-        if (updateError) {
-            return <AlertMessage severity="error" children="Une erreur est survenue, veuillez réessayer !" />
-        }
-    }
-
 
 
 
@@ -119,23 +133,37 @@ function TodoItem({ todo, setMessage }) {
             {confirmDelete ?
                 <div className='deletePopup'>
                     <div className='deleteModal'>
-                        <p>Supprimer {todo.text}</p>
+                        <p>Supprimer "{todo.text}"</p>
                         <p>Êtes-vous sûr de vouloir supprimer cette tâche ?</p>
                         <div>
                             <p onClick={() => setConfirmDelete(!confirmDelete)}> Non </p>
                             <p onClick={() => deleteTodo(todo)}> Oui </p>
                         </div>
                     </div>
+                    {deleteIsLoading &&
+                        <Loader message="" />
+                    }
                 </div>
                 :
                 ''
 
             }
-            <div className={`todo__item ${todo.category} ${completed} ${datePast}`}>
+            <div className={`todo__item ${todo.category} ${completed} ${datePast} ${isUpdating} ${isDeleting}`}>
                 <div className='todo__top'>
                     <div className='todo__main'>
-                        <input type="checkbox" checked={todo.completed} onChange={() => updateTodo({ ...todo, completed: !todo.completed })} />
-                        <p>{todo.text}</p>
+                        {hours < 0 ?
+                            <Checkbox sx={{
+                                color: pink[800],
+                                '&.Mui-checked': {
+                                    color: pink[600],
+                                },
+                            }} checked={todo.completed} onChange={() => updateTodo({ ...todo, completed: !todo.completed })} />
+                            :
+                            <Checkbox checked={todo.completed} onChange={() => updateTodo({ ...todo, completed: !todo.completed })} />
+                        }
+
+                        {/* <input type="checkbox" checked={todo.completed} onChange={() => updateTodo({ ...todo, completed: !todo.completed })} /> */}
+                        <p className={datePast}>{todo.text}</p>
                         <p className='hiddenText'> {todo.text} </p>
                     </div>
                     <div className='todo__options'>
@@ -148,8 +176,13 @@ function TodoItem({ todo, setMessage }) {
                 </div>
 
                 <div className="todo__bottom">
-                    {datePast ?
+                    {/* {datePast ?
                         <p> Date expirée </p>
+                        :
+                        <p>{dayjs(todo.date).format("HH:mm")}</p>
+                    } */}
+                    {hours < 0 ?
+                        <p> {dayjs(todo.date).format("HH:mm")} - Expiré </p>
                         :
                         <p>{dayjs(todo.date).format("HH:mm")}</p>
                     }
@@ -162,10 +195,11 @@ function TodoItem({ todo, setMessage }) {
                 {updateIsLoading &&
                     <Loader message="" />
                 }
-                {deleteIsLoading &&
-                    <Loader message="" />
-                }
+
+
+
             </div>
+
         </>
     )
 }

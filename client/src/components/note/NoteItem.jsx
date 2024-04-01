@@ -17,11 +17,10 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const NoteItem = ({ note, setMessage }) => {
   const queryClient = useQueryClient();
-  const [isDeleting, setIsDeleting] = useState('');
 
   const [confirmDelete, setConfirmDelete] = useState(false);
 
-  const { mutate: deleteNote } = useMutation(
+  const { isLoading: deleteIsLoading, mutate: deleteNote } = useMutation(
     (deletedNote) => deleteNoteRequest(deletedNote),
     {
       onSettled: () => {
@@ -38,14 +37,15 @@ const NoteItem = ({ note, setMessage }) => {
     }
   );
 
-  const deleting = isDeleting ? 'deleting' : '';
+  const isDeleting = deleteIsLoading ? 'deleting'  : ''
+
   return (
     //  <Link to={`/notes/${note._id}`}>ici</Link> 
     <>
       {confirmDelete ?
         <div className='deletePopup'>
           <div className='deleteModal'>
-            <p>Supprimer {note.title}</p>
+            <p>Supprimer "{note.title}"</p>
             <p>Êtes-vous sûr de vouloir supprimer cette note ?</p>
             <div>
               <p onClick={() => setConfirmDelete(!confirmDelete)}> Non </p>
@@ -58,9 +58,9 @@ const NoteItem = ({ note, setMessage }) => {
 
       }
 
-      <div className={`note__item ${deleting}`}>
-        <h5> {note.title} </h5>
-        <h5 className='hiddenText'> {note.title} </h5>
+      <div className={`note__item ${isDeleting}`}>
+        <h4> {note.title} </h4>
+        <h4 className='hiddenText'> {note.title} </h4>
         <div className='note__option'>
           <Link to={`/notes/${note._id}`} state={{ note: note }}>
             <Button variant="outlined" color="primary" startIcon={<VisibilityIcon />} />

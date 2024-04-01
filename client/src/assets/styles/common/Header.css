@@ -11,7 +11,7 @@ body>#root>header {
     /* border-bottom : 1px solid black; */
     z-index: 99;
     box-shadow: var(--outer-shadow);
-    padding: 0 10em;
+    padding: 0 5em;
 }
 
 .header__home,
@@ -21,14 +21,32 @@ body>#root>header {
     justify-content: center;
 }
 
+.header__home a {
+    display : flex;
+    align-items: center;
+}
+
 .header__home svg,
 .header__notifications svg {
     margin: 0 10px;
     cursor: pointer;
 }
 
-.opacityLow {
+.header__notifications button, .header__home button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    color : var(--text)
+}
+
+
+.opacityLow, .disable {
     opacity: 0.1;
+    cursor: not-allowed !important;
+}
+
+.disable svg {
     cursor: not-allowed !important;
 }
 

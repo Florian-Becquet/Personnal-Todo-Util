@@ -2,12 +2,15 @@
 .component__title {
     margin-bottom: var(--fs-lg);
     gap: var(--fs-lg);
-    display: flex;
+    /* display: flex; */
 }
 
 .todo {
     display: flex;
-    gap: var(--fs-lg);
+    /* gap: var(--fs-lg); */
+    /* justify-content: center; */
+    width : 100%;
+
 }
 
 .todo__subtitle {
@@ -31,11 +34,13 @@
 }
 
 
-
+.inProgress {
+    margin-right : 10px
+}
 
 .inProgress,
 .completed {
-    width: 50%;
+    width : calc(50% - 10px)
 }
 
 
@@ -45,11 +50,16 @@
     padding: 10px;
     margin: 10px 0;
     text-overflow: ellipsis;
+    border-left : 5px solid var(--background);
 }
 
 .todo__item:hover {
     box-shadow: 0 0 2px black;
 }
+
+/* .todo__item.travail {
+    border-left : 5px solid rgb(234 179 8);
+} */
 
 .todo__item .todo__top {
     display: flex;
@@ -61,12 +71,17 @@
 .todo__item .todo__top .todo__main {
     display: flex;
     max-width: 80%;
+    align-items: center;
 }
 
 .todo__item .todo__top .todo__main p:first-of-type {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.todo__item .todo__top .todo__main p.past {
+    text-decoration: line-through;
 }
 
 
@@ -112,8 +127,9 @@
 
 .todo__item .todo__bottom p:nth-of-type(2) svg {
     margin-right: 5px;
-    color: #7DD181;
+    color: #7DD181!important;
     font-size: 1.1em;
+    margin-top : 4px;
 }
 
 .todo__item .todo__bottom p:first-of-type {
@@ -143,7 +159,7 @@
 }
 
 .todo__item .todo__options button svg:hover {
-    color : white;
+    color : white!important;
     transition: color 0.3s;
 }
 
@@ -161,6 +177,7 @@
     margin-top: var(--fs-base);
     cursor: pointer;
     transition: color 0.3s;
+    width: fit-content;
 }
 
 .addTask svg {
@@ -179,6 +196,8 @@
     /* line-height: 1rem; */
     width: fit-content;
 }
+
+
 
 .todo__category.personnel {
     color: rgb(96 165 250);
@@ -204,44 +223,41 @@
     box-shadow: 0 0 2px rgb(172, 119, 226);
 }
 
-
-
-.past {
-    opacity: 0.5;
-    border: 1px solid red;
+.todo__main span {
+    padding : 0;
+    margin-right : 10px;
 }
+
+.todo__main svg {
+    width : 20px;
+}
+
+/* .past { */
+    /* opacity: 1; */
+    /* border: 1px solid red; */
+    /* box-shadow: 0 0 2px rgb(255, 95, 95); */
+    /* border-left : 5px solid red; */
+    /* box-shadow: 0 0 2px red; */
+/* } */
+
+/* .past:hover { */
+    /* opacity : 1; */
+    /* border-left : 5px solid red; */
+    /* transition : border 0.3s; */
+/* } */
+
 
 .deleting {
     opacity: 0.5;
     /* animation: opacity .3s */
 }
 
-@keyframes opacity {
-    from {
-        opacity: 1
-    }
 
-    25% {
-        opacity: 0.75
-    }
-
-    50% {
-        opacity: 0.5
-    }
-
-    75% {
-        opacity: 0.25
-    }
-
-    to {
-        opacity: 0;
-    }
-}
 
 .deletePopup {
     position : fixed;
     z-index : 10000;
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0,0,0,0.75);
     /* opacity : 0.9; */
     top : 0;
     left : 0;
@@ -275,12 +291,57 @@
 
 .deleteModal div p {
     cursor: pointer;
-    border : 1px solid black;
+    border : 1px solid var(--text);
     padding : 5px 15px;
     border-radius: 5px;
-
+    transition : 0.3s;
 }
 
+.deleteModal div p:hover {
+    background-color : var(--text);
+    color : var(--main-background);
+    transition : 0.3s;
+}
+
+.updating, .deleting {
+    opacity : 0.3;
+    transition: 0.3s;
+}
+
+.infoCompleted {
+    display : flex;
+    align-items: center;
+    background-color: var(--background);
+    padding : 10px;
+    margin-bottom : 20px;
+    width: fit-content;
+}
+
+.infoCompleted svg {
+    margin-right : 10px;
+}
+
+@keyframes opacity {
+    from {
+        opacity: 1
+    }
+
+    25% {
+        opacity: 0.75
+    }
+
+    50% {
+        opacity: 0.5
+    }
+
+    75% {
+        opacity: 0.25
+    }
+
+    to {
+        opacity: 0;
+    }
+}
 
 @media screen and (max-width: 1024px) {
     .todo {
@@ -298,5 +359,9 @@
 
     .todo__subtitle>div {
         width: 100%;
+    }
+
+    .todo__item .todo__bottom {
+        gap: 1em;
     }
 }

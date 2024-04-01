@@ -21,9 +21,8 @@ function TodoForm({ showNav, setShowNav }) {
   const [text, setText] = useState('');
   const [category, setCategory] = useState('');
   const [currentDate, setCurrendDate] = useState(new Date());
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(dayjs().add(1, 'hour'));
 
-  const today = dayjs();
 
   const queryClient = useQueryClient();
 
@@ -35,7 +34,7 @@ function TodoForm({ showNav, setShowNav }) {
       },
     }
   );
-    
+
 
   return (
     <>
@@ -57,13 +56,13 @@ function TodoForm({ showNav, setShowNav }) {
           <div className='close__form' onClick={() => setShowNav(!showNav)}><CloseOutlinedIcon /> </div>
           <h1>Ajouter une nouvelle tâche</h1>
           <TextField label="Titre" variant="outlined" value={text} onChange={(e) => setText(e.target.value)} required sx={{ mb: 3 }} />
-          <LocalizationProvider locale={fr} dateAdapter={AdapterDayjs}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DateTimePicker
               label="Saisir une date"
               onChange={(dateLocale) => setDate(dateLocale)}
               ampmInClock={false}
               ampm={false}
-              defaultValue={today}
+              defaultValue={dayjs().add(1, 'hour')}
               disablePast
               slotProps={{
                 textField: {

@@ -63,15 +63,15 @@ const Weather = () => {
                                     setCity(e.target.value)
                                 }}
                             >
-                                <TextField label="Ville" variant="outlined" onChange={(e) => setCity(e.target.value)} required sx={{ mb: 3 }} />
+                                <TextField label="Rechercher une ville" variant="outlined" onChange={(e) => setCity(e.target.value)} sx={{ mb: 3 }} />
                                 {/* <Button variant="contained" type='submit' sx={{ mt: 3, width: "50%", mx: 'auto' }}>
                                     Ok
                                 </Button> */}
                             </form>
                             <div>
                                 <div>
-                                    <h1><LocationOnIcon />{weatherData.location.name}</h1>
-                                    <span>{weatherData.location.country}</span>
+                                    <h1><LocationOnIcon />{weatherData.location.name}, <span>{weatherData.location.country}</span></h1>
+                                    
                                 </div>
 
                                 <p>Aujourd'hui, {dayjs(new Date()).format("DD MMMM YYYY")}</p>

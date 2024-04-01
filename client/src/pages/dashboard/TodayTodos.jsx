@@ -16,6 +16,7 @@ import AlertMessage from '../../components/common/AlertMessage';
 import { Box, Button, LinearProgress, TextField } from '@mui/material';
 import Loader from '../../components/common/Loader';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import { setGlobalState } from '../../redux/store';
 
 // import "../../components/styles/TodoPage.css"
 // import Weather from '../../components/Weather';
@@ -25,9 +26,21 @@ const TodayTodos = () => {
 
   const { isLoading, data: todos } = useQuery('todos',
     () => readTodosRequest());
+
+    useEffect(() => {
+      
+      setGlobalState("todos", todos);
+      setGlobalState('loading', isLoading)
+    }, [isLoading])
+
+
+    if(!isLoading) {
+    }
+
+   
   const [showNav, setShowNav] = useState(false);
   // const [isSuccess, setIsSuccess] = useState(false);
-  const [message, setMessage] = useState(null)
+  const [message, setMessage] = useState('')
   let arrayWithoutDuplon;
   let lengthTodayNoComplete;
   let TaskToDo;
@@ -93,7 +106,7 @@ const TodayTodos = () => {
 
   const TasksCompleted = () => {
     let TasksCompletedToday = [];
-    todos.filter((todo) => dayjs(new Date()).format("dddd DD/MM") === dayjs(todo.date).format("dddd DD/MM") && todo.completed === true)
+    todos.filter((todo) => dayjs(new Date()).format("dddd DD/MM") === dayjs(todo.date).format("dddd DD/MM") && todo.completed === true && Math.round(((dayjs(todo.date) - dayjs(new Date())) / 3_600_000) * 60) > 0)
       .map((todo) => {
         {
           TasksCompletedToday.push(todo)
@@ -121,7 +134,7 @@ const TodayTodos = () => {
     allTaskToDo = TaskToday();
   }
 
-
+  // const hours = Math.round(((dayjs(todo.date) - dayjs(new Date())) / 3_600_000) * 60);
 
 
   return (
@@ -143,7 +156,7 @@ const TodayTodos = () => {
             <div className='inProgress'>
               <div className='todo__subtitle'>
                 {/* <div> */}
-                <p>Tâches en cours - {TaskToDo.length} </p>
+                <p>Tâche(s) en cours - {TaskToDo.length} </p>
                 {/* </div> */}
               </div>
               {todos
@@ -180,7 +193,7 @@ const TodayTodos = () => {
                 </div>
 
                 {todos
-                  .filter((todo) => dayjs(new Date()).format("dddd DD/MM") === dayjs(todo.date).format("dddd DD/MM") && todo.completed === true)
+                  .filter((todo) => dayjs(new Date()).format("dddd DD/MM") === dayjs(todo.date).format("dddd DD/MM") && todo.completed === true && Math.round(((dayjs(todo.date) - dayjs(new Date())) / 3_600_000) * 60) > 0)
                   .map((todo) => {
                     return (<TodoItem todo={todo} key={todo._id} setMessage={setMessage} />)
                   })

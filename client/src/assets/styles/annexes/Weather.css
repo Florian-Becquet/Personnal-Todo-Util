@@ -163,6 +163,9 @@
     margin-bottom: 10px;
 }
 
+.main__day > div div h1 span {
+    margin-left : 10px;
+}
 
 
 .main__day > div h1 svg{
@@ -259,7 +262,7 @@
   }
 
   .weather__otherDays div {
-    margin : 0 var(--fs-xl);
+    margin : 0 var(--fs-lg);
   }
 
   .weather__otherDays h1 {
@@ -309,5 +312,14 @@
 
     .weather__otherDays {
         flex-direction: column;
+    }
+
+    .weather__otherDays {
+        width: 100%;
+    }
+
+    .main__day > div div h1 span {
+        margin-left : 10px;
+        font-size: 0.5em;
     }
 } 

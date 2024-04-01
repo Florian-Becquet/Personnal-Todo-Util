@@ -9,6 +9,8 @@ import NoteForm from './pages/notes/NoteForm'
 import AllNotes  from './pages/notes/AllNotes'
 import NotePage from './pages/notes/NotePage';
 import TodoUpdate from './pages/dashboard/TodoUpdate'
+import Repas from './pages/annexes/Repas'
+import RepasUpdate from './pages/annexes/RepasUpdate'
 
 
 
@@ -21,6 +23,8 @@ function App() {
         <Route path="/todos/allTasks" element={<AllTodos />} />
         <Route path="/todos/update/:id" element={<TodoUpdate />} />
         <Route path="/annexes/weather" element={<Weather />} />
+        <Route path="/annexes/repas" element={<Repas />} />
+        <Route path="/annexes/repas/update/:id" element={<RepasUpdate />} />
         <Route path="notes/createNote" element={<NoteForm />} />
         <Route path="/notes/allNotes" element={<AllNotes />} />
         <Route path="/notes/:id" element={<NotePage />} />

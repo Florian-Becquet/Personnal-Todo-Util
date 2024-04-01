@@ -16,9 +16,23 @@
     margin : 10px 0;
 }
 
+.singleNote form {
+  width : 50%;
+  margin : auto;
+}
+
 .singleNote .Editor__Preview {
     margin-top : 15px;
     /* width : 50%; */
+}
+
+.singleNote .preview, .singleNote .css-1ds5juw-MuiButtonBase-root-MuiButton-root:hover {
+  width : 100%
+}
+
+.singleNote .css-v4u0l7-MuiFormControl-root-MuiTextField-root, .singleNote .css-1ds5juw-MuiButtonBase-root-MuiButton-root {
+  width : 100%;
+  margin-bottom : 0!important;
 }
 
 .note__item .note__option {
@@ -41,13 +55,13 @@
 }
 
 
-.note__item h5 {
+.note__item h4 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.note__item h5:hover + .hiddenText {
+.note__item h4:hover + .hiddenText {
     visibility: visible;
     opacity: 1;
     transition: visibility 0.3s, opacity 0.3s;
@@ -220,3 +234,12 @@ code {
   .preview strong {
     font-size: 1.2em;
   }
+
+
+
+  @media screen and (max-width: 1024px) {
+    .singleNote form {
+      width : 100%;
+    }
+
+}

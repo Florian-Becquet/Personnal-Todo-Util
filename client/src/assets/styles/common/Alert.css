@@ -4,12 +4,15 @@
     left : 50%;
     transform: translateY(-50%);
     z-index: 11000!important;
+    background-color: var(--background)!important;
+    color : var(--text)!important;
 }
 
 @media screen and (max-width: 1024px) {
     .alert {
         position : fixed;
-        left : 50%;
+        left : 50%!important;
+        left : 0;
         transform: translate(-50%);
         top : 40px;
         z-index: 1001;

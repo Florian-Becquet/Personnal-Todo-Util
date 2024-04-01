@@ -52,7 +52,7 @@ nav .nav__wrapper ul li ul a li{
 
 nav {
     position: fixed;
-    width: 200px;
+    width: 225px;
     background-color: var(--background);
     margin-top: 48px;
     height: calc(100vh - 48px);

@@ -9,17 +9,18 @@ import EditNoteIcon from '@mui/icons-material/EditNote';
 import ArticleIcon from '@mui/icons-material/Article';
 import AirIcon from '@mui/icons-material/Air';
 import CloudOutlinedIcon from '@mui/icons-material/CloudOutlined';
+import LocalDiningIcon from '@mui/icons-material/LocalDining';
 
 
 const navItems = [
     {
-        title : 'Aujourd\'hui',
+        title : 'Tâches d\'aujourd\'hui',
         path: 'todos/today',
         icon: <TodayIcon />,
         className: 'today'
     },
     {
-        title : 'A venir',
+        title : 'Tâches à venir',
         path: 'todos/allTasks',
         icon: <CalendarMonthIcon />,
         className: 'allTasks'
@@ -41,6 +42,12 @@ const navItems = [
         path: 'annexes/weather',
         icon: <CloudOutlinedIcon />,
         className: 'meteo'
+    },
+    {
+        title : 'Repas',
+        path: 'annexes/repas',
+        icon: <LocalDiningIcon />,
+        className: 'repas'
     }
 ]
 
