@@ -8,6 +8,10 @@
     color : var(--text)!important;
 }
 
+.alert.MuiAlert-standardSuccess div, alert.MuiAlert-standardSuccess .MuiSvgIcon-root{
+    fill : #2e7d32!important
+}
+
 @media screen and (max-width: 1024px) {
     .alert {
         position : fixed;

@@ -46,7 +46,7 @@ function TodoItem({ todo, setMessage }) {
                 setMessage('Tâche modifiée')
                 setTimeout(() => {
                     setMessage('')
-                }, 3000)
+                }, 300000)
             },
         }
     );

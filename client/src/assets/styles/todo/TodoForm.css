@@ -114,7 +114,7 @@ form label, form input, form svg, #demo-simple-select  {
     color : var(--text)!important;
 }
 
-.MuiButtonBase-root,.MuiSvgIcon-root, .MuiPickersYear-yearButton, .MuiClockNumber-root {
+.MuiButtonBase-root, form .MuiSvgIcon-root, .todo .MuiSvgIcon-root, .MuiPickersYear-yearButton, .MuiClockNumber-root {
     color : var(--text)!important;
 }
 
@@ -126,6 +126,9 @@ form label, form input, form svg, #demo-simple-select  {
     width: 8px;
 }
 
+.loader .MuiSvgIcon-root {
+    color : initial!important;
+}
 
   /* Handle */
 ::-webkit-scrollbar-thumb {
