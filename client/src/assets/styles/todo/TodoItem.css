@@ -366,4 +366,8 @@
     .todo__item .todo__bottom {
         gap: 1em;
     }
+
+    .deleteModal {
+        width : 80%;
+    }
 }
