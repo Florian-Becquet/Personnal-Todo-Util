@@ -8,9 +8,9 @@ body>#root>header {
     width: 100vw;
     height: 48px;
     /* left : 200px; */
-    /* border-bottom : 1px solid black; */
+    border-bottom : 1px solid rgb(24, 24, 24);
     z-index: 99;
-    box-shadow: var(--outer-shadow);
+    /* box-shadow: var(--outer-shadow); */
     padding: 0 5em;
 }
 
