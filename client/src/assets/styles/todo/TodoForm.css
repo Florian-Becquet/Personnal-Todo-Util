@@ -88,7 +88,7 @@ form label, form input, form svg, #demo-simple-select  {
 }
 
 /* Date picker */
-.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+/* .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
     background-color: var(--background)!important;
     color : var(--text)!important;
 }
@@ -107,28 +107,49 @@ form label, form input, form svg, #demo-simple-select  {
 
 .css-iax6tr-MuiMultiSectionDigitalClock-root .MuiMultiSectionDigitalClockSection-root::-webkit-scrollbar, .css-iax6tr-MuiMultiSectionDigitalClock-root::-webkit-scrollbar {
     width: 8px;
-  }
+  } */
+
+.MuiPaper-root, .MuiTypography-root {
+    background-color: var(--background)!important;
+    color : var(--text)!important;
+}
+
+.MuiButtonBase-root,.MuiSvgIcon-root, .MuiPickersYear-yearButton, .MuiClockNumber-root {
+    color : var(--text)!important;
+}
+
+.Mui-disabled {
+    opacity : 0.2;
+}
+
+.MuiMultiSectionDigitalClockSection-root::-webkit-scrollbar, .MuiMultiSectionDigitalClockSection-root::-webkit-scrollbar {
+    width: 8px;
+}
+
 
   /* Handle */
 ::-webkit-scrollbar-thumb {
     background: var(--background);
   }
 
-.css-kg9q0s-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button.Mui-disabled, .css-1u23akw-MuiButtonBase-root-MuiPickersDay-root.Mui-disabled:not(.Mui-selected),
+/* .css-kg9q0s-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button.Mui-disabled, .css-1u23akw-MuiButtonBase-root-MuiPickersDay-root.Mui-disabled:not(.Mui-selected),
 .css-zddqwy-MuiClockNumber-root.Mui-disabled {
     background-color: var(--background)!important;
     color : var(--text)!important;
     opacity : 0.2!important ;
-}
-
+} */
+/* 
 .css-jgls56-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected) {
     border : 1px solid var(--text)!important;
 }
 
 .css-z3c6am-MuiFormControl-root-MuiTextField-root, .css-1o9hacb-MuiFormControl-root {
     margin-top : 10px!important;
-}
+} */
 
+form button[type="submit"] {
+    box-shadow : 0 0 2px black!important;
+}
 
 
 

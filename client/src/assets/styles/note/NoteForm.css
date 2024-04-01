@@ -93,6 +93,16 @@
 }
 
 
+#addNote .MuiInputBase-root, #addNote .MuiFormControl-root {
+    width : 50%!important;
+}
+
+#addNote .MuiButtonBase-root {
+    margin : 0!important;
+    margin-top : 20px!important;
+    background-color: var(--background)!important;
+}
+
 
 
 @media screen and (max-width: 1024px) {
@@ -118,7 +128,7 @@
         width : 100%!important;
     }
 
-    #addNote .css-1wo9mtq-MuiFormControl-root, #addNote .css-v4u0l7-MuiFormControl-root-MuiTextField-root { 
+    #addNote .MuiInputBase-root, #addNote .MuiFormControl-root, #addNote .MuiButtonBase-root {
         width : 100%!important;
     }
 }

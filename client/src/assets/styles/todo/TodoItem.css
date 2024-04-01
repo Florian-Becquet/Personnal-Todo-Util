@@ -226,6 +226,7 @@
 .todo__main span {
     padding : 0;
     margin-right : 10px;
+    margin-top : 2px;
 }
 
 .todo__main svg {

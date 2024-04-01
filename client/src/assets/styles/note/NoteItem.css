@@ -30,6 +30,11 @@
   width : 100%
 }
 
+.singleNote .MuiButtonBase-root {
+  width : 100%!important;
+  background-color: var(--background)!important;
+}
+
 .singleNote .css-v4u0l7-MuiFormControl-root-MuiTextField-root, .singleNote .css-1ds5juw-MuiButtonBase-root-MuiButton-root {
   width : 100%;
   margin-bottom : 0!important;

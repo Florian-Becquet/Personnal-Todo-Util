@@ -61,6 +61,11 @@
     display: block;
 }
 
+.food .MuiButtonBase-root {
+    background-color: var(--background)!important;
+    margin-bottom : var(--fs-xl)!important;
+    width: fit-content!important;
+}
 
 @media screen and (max-width: 1024px) {
     .food .jours {
