@@ -316,6 +316,7 @@
     padding : 10px;
     margin-bottom : 20px;
     width: fit-content;
+    margin-top : 10px;
 }
 
 .infoCompleted svg {

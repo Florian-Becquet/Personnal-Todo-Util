@@ -11,7 +11,7 @@ const AlertMessage = ({ severity, children }) => {
         const timeId = setTimeout(() => {
             // After 3 seconds set the show value to false
             setShow(false)
-        }, 30000000)
+        }, 3000)
         
         return () => {
             clearTimeout(timeId)

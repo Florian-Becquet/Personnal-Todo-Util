@@ -114,7 +114,7 @@ form label, form input, form svg, #demo-simple-select  {
     color : var(--text)!important;
 }
 
-.MuiButtonBase-root, form .MuiSvgIcon-root, .todo .MuiSvgIcon-root, .MuiPickersYear-yearButton, .MuiClockNumber-root {
+.MuiButtonBase-root, form .MuiSvgIcon-root, .todo .inProgress .MuiSvgIcon-root, .todo .completed .MuiSvgIcon-root, .MuiPickersYear-yearButton, .MuiClockNumber-root {
     color : var(--text)!important;
 }
 

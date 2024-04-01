@@ -5,11 +5,16 @@
     transform: translateY(-50%);
     z-index: 11000!important;
     background-color: var(--background)!important;
+    
+}
+
+.MuiAlert-message {
     color : var(--text)!important;
 }
 
 .alert.MuiAlert-standardSuccess div, alert.MuiAlert-standardSuccess .MuiSvgIcon-root{
-    fill : #2e7d32!important
+    /* color : #2e7d32!important; */
+    fill : #2e7d32!important;
 }
 
 @media screen and (max-width: 1024px) {
