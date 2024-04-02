@@ -18,8 +18,6 @@ const Repas = () => {
     const location = useLocation();
     const repas = location.state.repas
 
-    console.log(repas);
-
     const [update, setUpdate] = useState(false);
  
     
@@ -42,16 +40,14 @@ const Repas = () => {
         dimancheSoir: repas[0].dimancheSoir,
     })
 
-    console.log(values._id);
 
-    // useEffect(() => {
 
-    // }, [values])
+
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.put(`http://localhost:8080/annexes/repas/${repas[0]._id}`, values)
+        await axios.put(`https://personnal-todo-util.onrender.com/annexes/repas/${repas[0]._id}`, values)
             .then(res => {
                 navigate('/annexes/repas', { message: 'Tâche correctement modifiée' });
             })
