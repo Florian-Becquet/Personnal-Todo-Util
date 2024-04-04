@@ -10,7 +10,7 @@
   --inner-shadow: inset 3px 3px 3px #202125, inset -3px -3px 3px #2b2b2b;
   --yellow : #FDEF52;
 
-  --app-container: #f3f6fd;
+  /* --app-container: #f3f6fd;
   --main-color: #1f1c2e;
   --secondary-color: #4A4A4A;
   --link-color: #1f1c2e;
@@ -26,7 +26,7 @@
   --button-bg: #1f1c24;
   --search-area-bg: #fff;
   --star: #ff1c2e;
-  --message-btn: #fff;
+  --message-btn: #fff; */
 
   --fs-sm: clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem);
   --fs-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
@@ -41,7 +41,7 @@
   --arrow-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Arrow-down.svg);
 }
 
-.dark:root {
+/* .dark:root {
   --app-container: #1f1d2b;
   --app-container: #111827;
   --main-color: #fff;
@@ -60,7 +60,7 @@
   --more-list-bg-hover: rgba(195, 207, 244, 0.1);
   --more-list-shadow: rgba(195, 207, 244, 0.1);
   --message-btn: rgba(195, 207, 244, 0.1);
-}
+} */
 
 
 

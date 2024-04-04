@@ -1,16 +1,11 @@
-
 .component__title {
     margin-bottom: var(--fs-lg);
     gap: var(--fs-lg);
-    /* display: flex; */
 }
 
 .todo {
     display: flex;
-    /* gap: var(--fs-lg); */
-    /* justify-content: center; */
-    width : 100%;
-
+    width: 100%;
 }
 
 .todo__subtitle {
@@ -19,9 +14,6 @@
     margin-bottom: var(--fs-sm)
 }
 
-.todo__subtitle>div {
-    /* width: 50%; */
-}
 
 .pourcent {
     display: flex;
@@ -35,12 +27,12 @@
 
 
 .inProgress {
-    margin-right : 10px
+    margin-right: 10px
 }
 
 .inProgress,
 .completed {
-    width : calc(50% - 10px)
+    width: calc(50% - 10px)
 }
 
 
@@ -50,7 +42,7 @@
     padding: 10px;
     margin: 10px 0;
     text-overflow: ellipsis;
-    border-left : 5px solid var(--background);
+    border-left: 5px solid var(--background);
 }
 
 .todo__item:hover {
@@ -85,20 +77,20 @@
 }
 
 
-.todo__item p:hover + .hiddenText {
+.todo__item p:hover+.hiddenText {
     visibility: visible;
     opacity: 1;
     transition: visibility 0.3s, opacity 0.3s;
 }
 
 .todo__item .hiddenText {
-    position : absolute;
-    top : 105%;
-    left : 0;
-    width : 100%;
+    position: absolute;
+    top: 105%;
+    left: 0;
+    width: 100%;
     background-color: var(--background);
-    border : 1px solid var(--main-background);
-    padding : 5px;
+    border: 1px solid var(--main-background);
+    padding: 5px;
     border-radius: 5px;
     visibility: hidden;
     opacity: 0;
@@ -127,9 +119,9 @@
 
 .todo__item .todo__bottom p:nth-of-type(2) svg {
     margin-right: 5px;
-    color: #7DD181!important;
+    color: #7DD181 !important;
     font-size: 1.1em;
-    margin-top : 4px;
+    margin-top: 4px;
 }
 
 .todo__item .todo__bottom p:first-of-type {
@@ -159,7 +151,7 @@
 }
 
 .todo__item .todo__options button svg:hover {
-    color : white!important;
+    color: white !important;
     transition: color 0.3s;
 }
 
@@ -167,8 +159,8 @@
     margin-left: var(--fs-base);
 }
 
-.todo__item .todo__options > button svg:hover {
-    color : rgb(214, 55, 55)
+.todo__item .todo__options>button svg:hover {
+    color: rgb(214, 55, 55)
 }
 
 .addTask {
@@ -185,7 +177,7 @@
 }
 
 .addTask:hover {
-    color : white;
+    color: white;
     transition: color 0.3s;
 }
 
@@ -224,103 +216,90 @@
 }
 
 .todo__main span {
-    padding : 0;
-    margin-right : 10px;
-    margin-top : 2px;
+    padding: 0;
+    margin-right: 10px;
+    margin-top: 2px;
 }
 
 .todo__main svg {
-    width : 20px;
+    width: 20px;
 }
 
-/* .past { */
-    /* opacity: 1; */
-    /* border: 1px solid red; */
-    /* box-shadow: 0 0 2px rgb(255, 95, 95); */
-    /* border-left : 5px solid red; */
-    /* box-shadow: 0 0 2px red; */
-/* } */
-
-/* .past:hover { */
-    /* opacity : 1; */
-    /* border-left : 5px solid red; */
-    /* transition : border 0.3s; */
-/* } */
 
 
 .deleting {
     opacity: 0.5;
-    /* animation: opacity .3s */
 }
 
 
 
 .deletePopup {
-    position : fixed;
-    z-index : 10000;
-    background-color: rgba(0,0,0,0.75);
+    position: fixed;
+    z-index: 10000;
+    background-color: rgba(0, 0, 0, 0.75);
     /* opacity : 0.9; */
-    top : 0;
-    left : 0;
-    width : 100vw;
-    height : 100vh;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
 }
 
 .deleteModal {
     background-color: var(--background);
-    position : absolute;
-    top : 50%;
-    left : 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     font-size: var(--fs-base);
     padding: 10px 20px;
-    opacity : 1;
+    opacity: 1;
     /* z-index: 11000; */
     border-radius: 5px;
 }
 
 .deleteModal p {
-    margin : 10px 0;
+    margin: 10px 0;
 }
 
 .deleteModal div {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap : 2em
+    gap: 2em
 }
 
 .deleteModal div p {
     cursor: pointer;
-    border : 1px solid var(--text);
-    padding : 5px 15px;
+    border: 1px solid var(--text);
+    padding: 5px 15px;
     border-radius: 5px;
-    transition : 0.3s;
+    transition: 0.3s;
 }
 
 .deleteModal div p:hover {
-    background-color : var(--text);
-    color : var(--main-background);
-    transition : 0.3s;
+    background-color: var(--text);
+    color: var(--main-background);
+    transition: 0.3s;
 }
 
-.updating, .deleting {
-    opacity : 0.3;
+.updating,
+.deleting {
+    opacity: 0.3;
     transition: 0.3s;
 }
 
 .infoCompleted {
-    display : flex;
+    display: flex;
     align-items: center;
     background-color: var(--background);
-    padding : 10px;
-    margin-bottom : 20px;
+    padding: 10px;
+    margin-bottom: 20px;
     width: fit-content;
-    margin-top : 10px;
+    margin-top: 10px;
 }
 
 .infoCompleted svg {
-    margin-right : 10px;
+    margin-right: 10px;
 }
 
 @keyframes opacity {
@@ -356,7 +335,7 @@
     }
 
     .completed {
-        margin-top : var(--fs-xxxl)
+        margin-top: var(--fs-xxxl)
     }
 
     .todo__subtitle>div {
@@ -368,6 +347,6 @@
     }
 
     .deleteModal {
-        width : 80%;
+        width: 80%;
     }
 }

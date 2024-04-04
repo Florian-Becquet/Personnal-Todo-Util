@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import createNoteRequest from '../../api/notes/createNoteRequest';
 import { Editor } from './Editor'
@@ -9,15 +9,7 @@ import '../../assets/styles/note/NoteForm.css'
 import AlertMessage from '../../components/common/AlertMessage';
 
 
-
-
-
 function CreateNoteForm() {
-  // const [token] = useContext(TokenContext)
-  // const [markdown, setMarkdown] = useState('Salut');
-
-
-
 
   const [text, setText] = useState(`
   # Header 1
@@ -59,10 +51,6 @@ function CreateNoteForm() {
   const [title, setTitle] = useState('');
   const [date, setDate] = useState(new Date());
   const [category, setCategory] = useState('');
-
-
-
-  // console.log(dateLocale);
 
   const queryClient = useQueryClient();
 

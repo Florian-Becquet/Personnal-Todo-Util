@@ -109,18 +109,6 @@ textarea {
     background-color: var(--main-background);
     color : var(--text);
 }
-/*
-.singleNote .Editor__Preview .preview{
-    width : 100%;
-} */
-
-
-/* @media screen and (max-width: 1024px) {
-    .note__item {
-        margin-top : 5px;
-    }
-
-} */
 
 
 code {

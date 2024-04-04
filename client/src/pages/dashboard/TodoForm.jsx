@@ -3,14 +3,12 @@ import { useMutation, useQueryClient } from 'react-query';
 import createTodoRequest from '../../api/todos/createTodoRequest';
 
 import dayjs from 'dayjs';
-import { fr } from 'date-fns/locale'
 
 import AlertMessage from '../../components/common/AlertMessage';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import SendIcon from '@mui/icons-material/Send';
-import ClipLoader from 'react-spinners/ClipLoader'
 import '../../assets/styles/todo/TodoForm.css'
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import Loader from '../../components/common/Loader';

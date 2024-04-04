@@ -1,13 +1,9 @@
 
 //Icons
-import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
-import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
-import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
 import TodayIcon from '@mui/icons-material/Today';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import ArticleIcon from '@mui/icons-material/Article';
-import AirIcon from '@mui/icons-material/Air';
 import CloudOutlinedIcon from '@mui/icons-material/CloudOutlined';
 import LocalDiningIcon from '@mui/icons-material/LocalDining';
 

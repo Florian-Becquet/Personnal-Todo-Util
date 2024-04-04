@@ -1,25 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
-import ClipLoader from 'react-spinners/ClipLoader'
 
 import readTodosRequest from '../../api/todos/readTodosRequest';
-
 
 import TodoItem from '../../components/todo/TodoItem';
 
 import dayjs from "dayjs";
-// import { API_URL } from "../../api/config"
-// import axios from 'axios';
+
 import 'dayjs/locale/fr'
 import TodoForm from './TodoForm';
 import AlertMessage from '../../components/common/AlertMessage';
-import { Box, Button, LinearProgress, TextField } from '@mui/material';
+import {LinearProgress} from '@mui/material';
 import Loader from '../../components/common/Loader';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import { setGlobalState } from '../../redux/store';
-
-// import "../../components/styles/TodoPage.css"
-// import Weather from '../../components/Weather';
 
 const TodayTodos = () => {
   // const [token] = useContext(TokenContext)
@@ -39,7 +33,7 @@ const TodayTodos = () => {
 
    
   const [showNav, setShowNav] = useState(false);
-  // const [isSuccess, setIsSuccess] = useState(false);
+
   const [message, setMessage] = useState('')
   let arrayWithoutDuplon;
   let lengthTodayNoComplete;
@@ -134,12 +128,10 @@ const TodayTodos = () => {
     allTaskToDo = TaskToday();
   }
 
-  // const hours = Math.round(((dayjs(todo.date) - dayjs(new Date())) / 3_600_000) * 60);
 
 
   return (
     <>
-      {/* <TodoForm showNav={showNav} setShowNav={setShowNav} /> */}
       {isLoading
         ?
         <Loader message="Un peu de patience s'il vous plaît"/>

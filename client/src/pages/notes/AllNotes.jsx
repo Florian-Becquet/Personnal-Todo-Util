@@ -1,18 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-import ClipLoader from 'react-spinners/ClipLoader'
+
 
 import readNoteRequest from '../../api/notes/readNoteRequest';
-// import NoteItem from './NoteItem'
-// import NoteItem from './component/notes/NoteItem'
-import NoteForm from './NoteForm';
-// import { TokenContext } from '../App';
-import dayjs from "dayjs";
-import { Editor } from './Editor'
-import { Preview } from './Preview'
-// import { Link } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import NotePage from './NotePage';
+
 import NoteItem from '../../components/note/NoteItem';
 import { Button } from '@mui/material';
 import AlertMessage from '../../components/common/AlertMessage';

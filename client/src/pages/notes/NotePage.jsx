@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Preview } from './Preview'
-import dayjs from "dayjs";
-import { Link, useLocation, useNavigate } from "react-router-dom"
-import { Editor } from './Editor';
-import updateNoteRequest from '../../api/notes/updateNoteRequest';
-import { useMutation, useQueryClient } from 'react-query';
+import { useLocation, useNavigate } from "react-router-dom"
+
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 
 import SendIcon from '@mui/icons-material/Send';

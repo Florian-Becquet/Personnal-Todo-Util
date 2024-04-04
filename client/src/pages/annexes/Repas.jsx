@@ -2,27 +2,18 @@ import React, { useEffect, useState } from 'react'
 import vege from '../../assets/images/vege.png'
 import '../../assets/styles/annexes/Repas.css'
 
-// import { useMutation, useQuery, useQueryClient } from 'react-query';
-import { useQueryClient, useMutation, QueryClient, useQuery } from 'react-query'
+import {  useQuery } from 'react-query'
 import Loader from '../../components/common/Loader';
 
-import updateRepasRequest from '../../api/repas/updateRepasRequest';
 import readRepasRequest from '../../api/repas/readRepasRequest';
 import { Button } from '@mui/material';
-import { is } from 'date-fns/locale';
-import axios from 'axios';
+
 import { Link } from 'react-router-dom';
 
 
 const Repas = () => {
     const { isLoading, data: repas } = useQuery('repas',
         () => readRepasRequest());
-
-    const queryClient = useQueryClient();
-
-    const [update, setUpdate] = useState(false);
-
-
 
     return (
         <>
@@ -41,7 +32,6 @@ const Repas = () => {
                                     Modifier le programme
                                 </Button>
                                 </Link>
-
 
                             <div className='jours'>
 
@@ -94,13 +84,8 @@ const Repas = () => {
                                             <div>{repas[0].dimancheSoir}</div>
                                         </>
                                 </div>
-                                {/* </div> */}
                             </div>
-
                         </div>
-                        {/* <Checkbox checked={todo.completed} onChange={() => updateTodo({ ...todo, completed: !todo.completed })}/> */}
-
-                    {/* <button onClick={() => setUpdate(!update)}>Modifier</button> */}
                 </div>
             }
         </>

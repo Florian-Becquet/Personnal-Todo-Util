@@ -10,29 +10,16 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import WbTwilightIcon from '@mui/icons-material/WbTwilight';
 import ThermostatIcon from '@mui/icons-material/Thermostat';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import AirIcon from '@mui/icons-material/Air';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { Box, Button, Paper, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import Loader from "../../components/common/Loader";
-import 'dayjs/locale/fr'
+import 'dayjs/locale/fr';
 const Weather = () => {
     const [weatherData, setWeatherData] = useState('');
     const [city, setCity] = useState('Seclin');
 
     dayjs.locale('fr')
-
-    // const fetchWeatherData = () => {
-    //     axios.get(
-    //         `http://api.weatherapi.com/v1/forecast.json?key=bc7832f417be4d57b50133714242402&q=Seclin&days=1&aqi=no&alerts=no`
-    //     )
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //             console.log(Math.round(data.current.temp_c));
-    //             setWeatherData(data);
-    //         });
-    // };
 
     const fetchWeatherData = async () => {
         await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=bc7832f417be4d57b50133714242402&q=${city}=&days=3&aqi=no&alerts=no`)
