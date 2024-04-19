@@ -40,9 +40,6 @@ const Repas = () => {
         dimancheSoir: repas[0].dimancheSoir,
     })
 
-
-
-
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -53,7 +50,6 @@ const Repas = () => {
             })
             .catch(err => console.log(err))
     }
-
 
     const { mutate: updateRepas } = useMutation(
         // (updatedTodo) => updateTodoRequest(updatedTodo, token),
@@ -67,7 +63,6 @@ const Repas = () => {
             },
         }
     );
-
 
     return (
         <>
@@ -143,7 +138,6 @@ const Repas = () => {
                                 </div>
                                 {/* </div> */}
                             </div>
-
                         </div>
                         {/* <Checkbox checked={todo.completed} onChange={() => updateTodo({ ...todo, completed: !todo.completed })}/> */}
                     </form>
