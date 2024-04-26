@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 //https://www.weatherapi.com/my/
 const API_KEY = "537260dc2a50df9374abec6f58f72b0e";
 import axios from 'axios';
-import ClipLoader from "react-spinners/ClipLoader";
 import dayjs from "dayjs";
 import "../../assets/styles/annexes/Weather.css"
 import LightModeIcon from '@mui/icons-material/LightMode';

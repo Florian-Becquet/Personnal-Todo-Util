@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import vege from '../../assets/images/vege.png'
 import '../../assets/styles/annexes/Repas.css'
 
-// import { useMutation, useQuery, useQueryClient } from 'react-query';
-import { useQueryClient, useMutation, QueryClient, useQuery } from 'react-query'
-import Loader from '../../components/common/Loader';
+import { useMutation } from 'react-query'
 
 import updateRepasRequest from '../../api/repas/updateRepasRequest';
-import readRepasRequest from '../../api/repas/readRepasRequest';
 import { Button } from '@mui/material';
-import { is } from 'date-fns/locale';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -17,10 +13,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const Repas = () => {
     const location = useLocation();
     const repas = location.state.repas
-
-    const [update, setUpdate] = useState(false);
- 
-    
 
     const [values, setValues] = useState({
         id: repas[0]._id,
@@ -50,19 +42,6 @@ const Repas = () => {
             })
             .catch(err => console.log(err))
     }
-
-    const { mutate: updateRepas } = useMutation(
-        // (updatedTodo) => updateTodoRequest(updatedTodo, token),
-        (updatedRepas) => updateRepasRequest(updatedRepas),
-        {
-            onSettled: () => {
-
-
-                queryClient.invalidateQueries('repas');
-
-            },
-        }
-    );
 
     return (
         <>
