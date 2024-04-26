@@ -15,7 +15,6 @@ const AlertMessage = ({ severity, children }) => {
         
         return () => {
             clearTimeout(timeId)
-            // children = '';
         }
     }, []);
 
